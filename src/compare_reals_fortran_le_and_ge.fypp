@@ -1,0 +1,23 @@
+#:include "compare_reals_fortran_common.fypp"
+#:set INTERFACE_NAME = "le_and_ge"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+
+    #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
+    module procedure ${FUNCTION_NAME}$
+
+        is_equal = (x .le. y) .and. (x .ge. y)
+
+    end procedure ${FUNCTION_NAME}$
+    #:del FUNCTION_NAME
+
+    #:endfor
+
+end submodule ${SUBMODULE_NAME}$
