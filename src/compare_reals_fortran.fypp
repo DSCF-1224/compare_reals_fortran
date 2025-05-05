@@ -1,0 +1,11 @@
+#:include "compare_reals_fortran_common.fypp"
+module ${MODULE_NAME}$
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+
+
+    implicit none
+
+end module ${MODULE_NAME}$
