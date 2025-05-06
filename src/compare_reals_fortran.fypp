@@ -1,0 +1,34 @@
+#:include "compare_reals_fortran_common.fypp"
+module ${MODULE_NAME}$
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+
+
+    implicit none
+
+
+    private
+    public  :: le_and_ge
+
+
+    #:set INTERFACE_NAME = "le_and_ge"
+    interface ${INTERFACE_NAME}$
+        !! version: experimental
+        !! return `(x .le. y) .and. (x .ge. y)`
+        #:for KIND in REAL_KINDS
+        #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
+
+        module pure elemental logical function ${FUNCTION_NAME}$(x, y) result(is_equal)
+
+            real(${KIND}$), intent(in) :: x, y
+
+        end function ${FUNCTION_NAME}$
+        #:del FUNCTION_NAME
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+    #:del INTERFACE_NAME
+
+end module ${MODULE_NAME}$
