@@ -1,0 +1,82 @@
+#:include "../src/compare_reals_fortran_common.fypp"
+#:mute
+
+#:set INTERFACE_NAMES = &
+    [ &
+        "set_negative_huge"    , &
+        "set_negative_one"     , &
+        "set_negative_epsilon" , &
+        "set_negative_tiny"    , &
+        "set_positive_tiny"    , &
+        "set_positive_epsilon" , &
+        "set_positive_one"     , &
+        "set_positive_huge"      &
+    ]
+
+#:endmute
+module compare_reals_fortran_support
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+
+
+    implicit none
+
+
+    private
+    #:for INTERFACE_NAME in INTERFACE_NAMES
+    public  :: ${INTERFACE_NAME}$
+    #:endfor
+
+    #:for INTERFACE_NAME in INTERFACE_NAMES
+
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${KIND}$
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+
+    #:endfor
+
+    contains
+    #:for INTERFACE_NAME in INTERFACE_NAMES
+    #:for KIND in REAL_KINDS
+
+
+    #:set SUBROUTINE_NAME = INTERFACE_NAME + "_" + KIND
+    pure elemental subroutine ${SUBROUTINE_NAME}$(x)
+
+        real(${KIND}$), intent(inout) :: x
+
+        #:if INTERFACE_NAME == "set_negative_huge"
+        x = - huge(x)
+        #:endif
+        #:if INTERFACE_NAME == "set_negative_one"
+        x = -1.0_${KIND}$
+        #:endif
+        #:if INTERFACE_NAME == "set_negative_epsilon"
+        x = - epsilon(x)
+        #:endif
+        #:if INTERFACE_NAME == "set_negative_tiny"
+        x = - tiny(x)
+        #:endif
+        #:if INTERFACE_NAME == "set_positive_tiny"
+        x = tiny(x)
+        #:endif
+        #:if INTERFACE_NAME == "set_positive_epsilon"
+        x = epsilon(x)
+        #:endif
+        #:if INTERFACE_NAME == "set_positive_one"
+        x = 1.0_${KIND}$
+        #:endif
+        #:if INTERFACE_NAME == "set_positive_huge"
+        x = huge(x)
+        #:endif
+
+    end subroutine ${SUBROUTINE_NAME}$
+    #:endfor
+
+    #:endfor
+
+end module compare_reals_fortran_support
