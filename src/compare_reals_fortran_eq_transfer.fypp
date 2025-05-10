@@ -1,0 +1,45 @@
+#:include "compare_reals_fortran_common.fypp"
+#:set INTERFACE_NAME = "eq_transfer"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+
+    #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
+    module procedure ${FUNCTION_NAME}$
+
+        is_equal = is_ieee_either_zero(x) .and. is_ieee_either_zero(y)
+
+        if (is_equal) return
+
+        associate( &!
+        &   storage_size_int  => storage_size(1) , &!
+        &   storage_size_real => storage_size(x)   &!
+        )
+
+            associate( array_size => storage_size_real / storage_size_int )
+
+                associate( &!
+                &   x_transferred => transfer( source = x, mold = 1, size = array_size ) , &!
+                &   y_transferred => transfer( source = y, mold = 1, size = array_size )   &!
+                )
+
+                    is_equal = all( x_transferred(:) .eq. y_transferred(:) )
+
+                end associate
+
+            end associate
+
+        end associate
+
+    end procedure ${FUNCTION_NAME}$
+    #:del FUNCTION_NAME
+
+    #:endfor
+
+end submodule ${SUBMODULE_NAME}$

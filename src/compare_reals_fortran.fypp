@@ -5,12 +5,34 @@ module ${MODULE_NAME}$
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
+    use, non_intrinsic :: ieee_class_fortran, only: is_ieee_either_zero
+
 
     implicit none
 
 
     private
+    public  :: eq_transfer
     public  :: le_and_ge
+
+
+    #:set INTERFACE_NAME = "eq_transfer"
+    interface ${INTERFACE_NAME}$
+        !! version: experimental
+        !! return `all( transfer( x, 1, storage_size(x)/storage_size(1) ) .eq. transfer( y, 1, storage_size(x)/storage_size(1) ) )`
+        #:for KIND in REAL_KINDS
+        #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
+
+        module pure elemental logical function ${FUNCTION_NAME}$(x, y) result(is_equal)
+
+            real(${KIND}$), intent(in) :: x, y
+
+        end function ${FUNCTION_NAME}$
+        #:del FUNCTION_NAME
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+    #:del INTERFACE_NAME
 
 
     #:set INTERFACE_NAME = "le_and_ge"
