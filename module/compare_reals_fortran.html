@@ -85,7 +85,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="59.4% of total for modules and submodules.">19 statements</a>
+                 title="39.0% of total for modules and submodules.">32 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -133,6 +133,7 @@
       </a>
       <div id="inters-0" class="collapse">
         <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/compare_reals_fortran.html#interface-eq_transfer">eq_transfer</a>
             <a class="list-group-item" href="../module/compare_reals_fortran.html#interface-le_and_ge">le_and_ge</a>
         </div>
       </div>
@@ -164,6 +165,7 @@
             <li class="list-group-item">
               <ul class="list-inline">
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item">ieee_class_fortran</li>
               </ul>
             </li>
         </ul>
@@ -177,6 +179,7 @@
             <li class="list-group-item">
               <ul class="list-inline">
                 <li class="list-inline-item"><h5>Descendants:</h5></li>
+                  <li class="list-inline-item"><a href='compare_reals_fortran_eq_transfer.html'>compare_reals_fortran_eq_transfer</a></li>
                   <li class="list-inline-item"><a href='compare_reals_fortran_le_and_ge.html'>compare_reals_fortran_le_and_ge</a></li>
               </ul>
             </li>
@@ -193,17 +196,17 @@
           <h2>Interfaces</h2>
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-le_and_ge"></span>
-      <h3>public        interface <a href='../interface/le_and_ge.html'>le_and_ge</a> 
+      <span class="anchor" id="interface-eq_transfer"></span>
+      <h3>public        interface <a href='../interface/eq_transfer.html'>eq_transfer</a> 
       </h3>
     </div>
       <div class="card-body">
-        <p>return <code>(x .le. y) .and. (x .ge. y)</code></p>
+        <p>return <code>all( transfer( x, 1, storage_size(x)/storage_size(1) ) .eq. transfer( y, 1, storage_size(x)/storage_size(1) ) )</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure elemental module function le_and_ge_real128(x, y) result(is_equal)  
+    private pure elemental module function eq_transfer_real128(x, y) result(is_equal)  
 
     </h3>
   
@@ -261,7 +264,7 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental module function le_and_ge_real32(x, y) result(is_equal)  
+    private pure elemental module function eq_transfer_real32(x, y) result(is_equal)  
 
     </h3>
   
@@ -319,7 +322,7 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental module function le_and_ge_real64(x, y) result(is_equal)  
+    private pure elemental module function eq_transfer_real64(x, y) result(is_equal)  
 
     </h3>
   
@@ -378,6 +381,193 @@
     </ul>
   </div>
 
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-le_and_ge"></span>
+      <h3>public        interface <a href='../interface/le_and_ge.html'>le_and_ge</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>return <code>(x .le. y) .and. (x .ge. y)</code></p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function le_and_ge_real128(x, y) result(is_equal)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~6"></span>
+              real(kind=real128),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~6"></span>
+              real(kind=real128),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function le_and_ge_real32(x, y) result(is_equal)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~4"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~4"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function le_and_ge_real64(x, y) result(is_equal)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~5"></span>
+              real(kind=real64),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~5"></span>
+              real(kind=real64),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
         </section>
         <br>
 
@@ -405,7 +595,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-06 05:06 +0000             </p>
+ on 2025-05-10 14:56 +0000             </p>
           </div>
         </div>
         <br>
