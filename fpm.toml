@@ -19,6 +19,9 @@ implicit-typing = false
 implicit-external = false
 source-form = "free"
 
+[dependencies]
+ieee_class_fortran = { git = "https://github.com/DSCF-1224/ieee_class_fortran", branch = "main" }
+
 [[test]]
 name = "test_le_and_ge"
 source-dir = "test"
