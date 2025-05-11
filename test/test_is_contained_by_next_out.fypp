@@ -1,0 +1,95 @@
+#:include "../src/compare_reals_fortran_common.fypp"
+#:mute
+
+#:set LIST_SET_VALUE_STATEMENT = &
+    [ &
+        "set_ieee_negative_inf"  , &
+        "set_negative_huge"      , &
+        "set_negative_one"       , &
+        "set_negative_epsilon"   , &
+        "set_negative_tiny"      , &
+        "set_ieee_negative_zero" , &
+        "set_ieee_positive_zero" , &
+        "set_positive_tiny"      , &
+        "set_positive_epsilon"   , &
+        "set_positive_one"       , &
+        "set_positive_huge"      , &
+        "set_ieee_positive_inf"    &
+    ]
+
+#:set COUNT_ERROR_STOP = 1
+
+#:endmute
+program test_eq_transfer
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+
+    use, non_intrinsic :: compare_reals_fortran, only: is_contained_by_next_out
+
+    use, non_intrinsic :: compare_reals_fortran_support
+    use, non_intrinsic :: ieee_class_fortran
+
+
+    implicit none
+
+
+    #:for KIND in REAL_KINDS
+    call test_${KIND}$
+    #:endfor
+
+
+    contains
+    #:for KIND in REAL_KINDS
+
+
+    #:set SUBROUTINE_NAME = "test_" + KIND
+    subroutine ${SUBROUTINE_NAME}$
+        #:for SET_VALUE_STATEMENT_X in LIST_SET_VALUE_STATEMENT
+        #:for SET_VALUE_STATEMENT_Y in LIST_SET_VALUE_STATEMENT
+
+        block
+
+            real(${KIND}$) :: x, y
+
+            call ${SET_VALUE_STATEMENT_X}$(x)
+            call ${SET_VALUE_STATEMENT_Y}$(y)
+
+            #:mute
+
+                #:if SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
+                    #:set FLAG = ".not. "
+                #:elif (SET_VALUE_STATEMENT_X == "set_ieee_negative_zero") and (SET_VALUE_STATEMENT_Y == "set_ieee_positive_zero")
+                    #:set FLAG = ".not. "
+                #:elif SET_VALUE_STATEMENT_X == "set_ieee_positive_zero" and SET_VALUE_STATEMENT_Y == "set_ieee_negative_zero"
+                    #:set FLAG = ".not. "
+                #:else
+                    #:set FLAG = ""
+                #:endif
+
+                #:if FLAG == ""
+                    #:set ERROR_STOP_MSG = "REQUIRED: .false. / RESULT: .true. "
+                #:else
+                    #:set ERROR_STOP_MSG = "REQUIRED: .true. / RESULT: .false. "
+                #:endif
+
+                #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + _FILE_ + " No."
+
+            #:endmute
+            if ( ${FLAG}$is_contained_by_next_out(x,y) ) then
+                error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+                #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
+            end if
+            #:del ERROR_STOP_MSG
+            #:del FLAG
+
+        end block
+
+        #:endfor
+        #:endfor
+    end subroutine ${SUBROUTINE_NAME}$
+    #:del SUBROUTINE_NAME
+
+    #:endfor
+end program test_eq_transfer

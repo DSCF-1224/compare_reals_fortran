@@ -1,0 +1,44 @@
+#:include "compare_reals_fortran_common.fypp"
+#:set INTERFACE_NAME = "is_contained_by_next_out"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+
+    #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
+    module procedure ${FUNCTION_NAME}$
+
+        if      ( is_ieee_negative_inf(x) ) then ; is_equal = is_ieee_negative_inf(y)
+        else if ( is_ieee_positive_inf(x) ) then ; is_equal = is_ieee_positive_inf(y)
+        else
+
+            associate( &!
+                ieee_negative_inf_x => ieee_value( x = x, class = ieee_negative_inf ) , &!
+                ieee_positive_inf_x => ieee_value( x = x, class = ieee_positive_inf )   &!
+            )
+
+                associate( &!
+                    ieee_next_down_x => ieee_next_after( x = x, y = ieee_negative_inf_x ) , &!
+                    ieee_next_up_x   => ieee_next_after( x = x, y = ieee_positive_inf_x )   &!
+                )
+
+                    is_equal =       ( ieee_next_down_x .lt. y              ) &!
+                    &          .and. ( y                .lt. ieee_next_up_x )
+
+                end associate
+
+            end associate
+
+        end if
+
+    end procedure ${FUNCTION_NAME}$
+    #:del FUNCTION_NAME
+
+    #:endfor
+
+end submodule ${SUBMODULE_NAME}$
