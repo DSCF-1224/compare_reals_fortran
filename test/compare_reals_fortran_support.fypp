@@ -3,14 +3,28 @@
 
 #:set INTERFACE_NAMES = &
     [ &
-        "set_negative_huge"    , &
-        "set_negative_one"     , &
-        "set_negative_epsilon" , &
-        "set_negative_tiny"    , &
-        "set_positive_tiny"    , &
-        "set_positive_epsilon" , &
-        "set_positive_one"     , &
-        "set_positive_huge"      &
+        "set_negative_huge"              , &
+        "set_negative_huge_next_up"      , &
+        "set_negative_one_next_down"     , &
+        "set_negative_one"               , &
+        "set_negative_one_next_up"       , &
+        "set_negative_epsilon_next_down" , &
+        "set_negative_epsilon"           , &
+        "set_negative_epsilon_next_up"   , &
+        "set_negative_tiny_next_down"    , &
+        "set_negative_tiny"              , &
+        "set_negative_tiny_next_up"      , &
+        "set_positive_tiny_next_down"    , &
+        "set_positive_tiny"              , &
+        "set_positive_tiny_next_up"      , &
+        "set_positive_epsilon_next_down" , &
+        "set_positive_epsilon"           , &
+        "set_positive_epsilon_next_up"   , &
+        "set_positive_one_next_down"     , &
+        "set_positive_one"               , &
+        "set_positive_one_next_up"       , &
+        "set_positive_huge_next_down"    , &
+        "set_positive_huge"                &
     ]
 
 #:endmute
@@ -19,6 +33,12 @@ module compare_reals_fortran_support
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
+
+    use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_next_after
+    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_signaling_nan
+    use, intrinsic :: ieee_arithmetic, only: ieee_value
 
 
     implicit none
@@ -51,27 +71,43 @@ module compare_reals_fortran_support
 
         #:if INTERFACE_NAME == "set_negative_huge"
         x = - huge(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_one"
+        #:elif INTERFACE_NAME.startswith("set_negative_huge_")
+        call set_negative_huge(x)
+        #:elif INTERFACE_NAME == "set_negative_one"
         x = -1.0_${KIND}$
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_epsilon"
+        #:elif INTERFACE_NAME.startswith("set_negative_one_")
+        call set_negative_one(x)
+        #:elif INTERFACE_NAME == "set_negative_epsilon"
         x = - epsilon(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_tiny"
+        #:elif INTERFACE_NAME.startswith("set_negative_epsilon_")
+        call set_negative_epsilon(x)
+        #:elif INTERFACE_NAME == "set_negative_tiny"
         x = - tiny(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_tiny"
+        #:elif INTERFACE_NAME.startswith("set_negative_tiny_")
+        call set_negative_tiny(x)
+        #:elif INTERFACE_NAME == "set_positive_tiny"
         x = tiny(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_epsilon"
+        #:elif INTERFACE_NAME.startswith("set_positive_tiny_")
+        call set_positive_tiny(x)
+        #:elif INTERFACE_NAME == "set_positive_epsilon"
         x = epsilon(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_one"
+        #:elif INTERFACE_NAME.startswith("set_positive_epsilon_")
+        call set_positive_epsilon(x)
+        #:elif INTERFACE_NAME == "set_positive_one"
         x = 1.0_${KIND}$
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_huge"
+        #:elif INTERFACE_NAME.startswith("set_positive_one_")
+        call set_positive_one(x)
+        #:elif INTERFACE_NAME == "set_positive_huge"
         x = huge(x)
+        #:elif INTERFACE_NAME.startswith("set_positive_huge_")
+        call set_positive_huge(x)
+        #:else
+            #:stop "The implementation is required: {}".format(INTERFACE_NAME)
+        #:endif
+        #:if INTERFACE_NAME.endswith("_next_down")
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+        #:elif INTERFACE_NAME.endswith("_next_up")
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
         #:endif
 
     end subroutine ${SUBROUTINE_NAME}$
