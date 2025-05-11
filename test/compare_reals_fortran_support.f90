@@ -20,10 +20,14 @@ module compare_reals_fortran_support
     public  :: set_negative_one_next_down
     public  :: set_negative_one
     public  :: set_negative_one_next_up
+    public  :: set_negative_epsilon_next_down
     public  :: set_negative_epsilon
+    public  :: set_negative_epsilon_next_up
     public  :: set_negative_tiny
     public  :: set_positive_tiny
+    public  :: set_positive_epsilon_next_down
     public  :: set_positive_epsilon
+    public  :: set_positive_epsilon_next_up
     public  :: set_positive_one_next_down
     public  :: set_positive_one
     public  :: set_positive_one_next_up
@@ -66,11 +70,25 @@ module compare_reals_fortran_support
     end interface set_negative_one_next_up
 
 
+    interface set_negative_epsilon_next_down
+        module procedure :: set_negative_epsilon_next_down_real32
+        module procedure :: set_negative_epsilon_next_down_real64
+        module procedure :: set_negative_epsilon_next_down_real128
+    end interface set_negative_epsilon_next_down
+
+
     interface set_negative_epsilon
         module procedure :: set_negative_epsilon_real32
         module procedure :: set_negative_epsilon_real64
         module procedure :: set_negative_epsilon_real128
     end interface set_negative_epsilon
+
+
+    interface set_negative_epsilon_next_up
+        module procedure :: set_negative_epsilon_next_up_real32
+        module procedure :: set_negative_epsilon_next_up_real64
+        module procedure :: set_negative_epsilon_next_up_real128
+    end interface set_negative_epsilon_next_up
 
 
     interface set_negative_tiny
@@ -87,11 +105,25 @@ module compare_reals_fortran_support
     end interface set_positive_tiny
 
 
+    interface set_positive_epsilon_next_down
+        module procedure :: set_positive_epsilon_next_down_real32
+        module procedure :: set_positive_epsilon_next_down_real64
+        module procedure :: set_positive_epsilon_next_down_real128
+    end interface set_positive_epsilon_next_down
+
+
     interface set_positive_epsilon
         module procedure :: set_positive_epsilon_real32
         module procedure :: set_positive_epsilon_real64
         module procedure :: set_positive_epsilon_real128
     end interface set_positive_epsilon
+
+
+    interface set_positive_epsilon_next_up
+        module procedure :: set_positive_epsilon_next_up_real32
+        module procedure :: set_positive_epsilon_next_up_real64
+        module procedure :: set_positive_epsilon_next_up_real128
+    end interface set_positive_epsilon_next_up
 
 
     interface set_positive_one_next_down
@@ -281,6 +313,37 @@ module compare_reals_fortran_support
 
 
 
+    pure elemental subroutine set_negative_epsilon_next_down_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_negative_epsilon_next_down_real32
+
+
+    pure elemental subroutine set_negative_epsilon_next_down_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_negative_epsilon_next_down_real64
+
+
+    pure elemental subroutine set_negative_epsilon_next_down_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_negative_epsilon_next_down_real128
+
+
+
     pure elemental subroutine set_negative_epsilon_real32(x)
 
         real(real32), intent(inout) :: x
@@ -306,6 +369,37 @@ module compare_reals_fortran_support
         x = - epsilon(x)
 
     end subroutine set_negative_epsilon_real128
+
+
+
+    pure elemental subroutine set_negative_epsilon_next_up_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_negative_epsilon_next_up_real32
+
+
+    pure elemental subroutine set_negative_epsilon_next_up_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_negative_epsilon_next_up_real64
+
+
+    pure elemental subroutine set_negative_epsilon_next_up_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        call set_negative_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_negative_epsilon_next_up_real128
 
 
 
@@ -365,6 +459,37 @@ module compare_reals_fortran_support
 
 
 
+    pure elemental subroutine set_positive_epsilon_next_down_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_positive_epsilon_next_down_real32
+
+
+    pure elemental subroutine set_positive_epsilon_next_down_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_positive_epsilon_next_down_real64
+
+
+    pure elemental subroutine set_positive_epsilon_next_down_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_negative_inf ) )
+
+    end subroutine set_positive_epsilon_next_down_real128
+
+
+
     pure elemental subroutine set_positive_epsilon_real32(x)
 
         real(real32), intent(inout) :: x
@@ -390,6 +515,37 @@ module compare_reals_fortran_support
         x = epsilon(x)
 
     end subroutine set_positive_epsilon_real128
+
+
+
+    pure elemental subroutine set_positive_epsilon_next_up_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_positive_epsilon_next_up_real32
+
+
+    pure elemental subroutine set_positive_epsilon_next_up_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_positive_epsilon_next_up_real64
+
+
+    pure elemental subroutine set_positive_epsilon_next_up_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        call set_positive_epsilon(x)
+        x = ieee_next_after( x = x, y = ieee_value( x = x, class = ieee_positive_inf ) )
+
+    end subroutine set_positive_epsilon_next_up_real128
 
 
 
