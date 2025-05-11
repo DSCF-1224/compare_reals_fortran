@@ -19,14 +19,26 @@
 
 #:set COUNT_ERROR_STOP = 1
 
+#:if TARGET_INTERFACE == 1
+    #:set INTERFACE_NAME = "eq_transfer"
+#:elif TARGET_INTERFACE == 2
+    #:set INTERFACE_NAME = "is_contained_by_next_out"
+#:elif TARGET_INTERFACE == 3
+    #:set INTERFACE_NAME = "le_and_ge"
+#:else
+    #:stop "Wrong `TARGET_INTERFACE` mode {}!".format(TARGET_INTERFACE)
+#:endif
+
+#:set PROGRAM_NAME = "test_" + INTERFACE_NAME
+
 #:endmute
-program test_le_and_ge
+program ${PROGRAM_NAME}$
 
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
-    use, non_intrinsic :: compare_reals_fortran, only: le_and_ge
+    use, non_intrinsic :: compare_reals_fortran, only: ${INTERFACE_NAME}$
 
     use, non_intrinsic :: compare_reals_fortran_support
     use, non_intrinsic :: ieee_class_fortran
@@ -74,10 +86,10 @@ program test_le_and_ge
                     #:set ERROR_STOP_MSG = "REQUIRED: .true. / RESULT: .false. "
                 #:endif
 
-                #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + _FILE_ + " No."
+                #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + PROGRAM_NAME + ".fypp No."
 
             #:endmute
-            if ( ${FLAG}$le_and_ge(x,y) ) then
+            if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) then
                 error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
                 #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
             end if
@@ -92,4 +104,4 @@ program test_le_and_ge
     #:del SUBROUTINE_NAME
 
     #:endfor
-end program test_le_and_ge
+end program ${PROGRAM_NAME}$
