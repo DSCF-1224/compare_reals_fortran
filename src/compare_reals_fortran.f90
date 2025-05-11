@@ -4,7 +4,14 @@ module compare_reals_fortran
     use, intrinsic :: iso_fortran_env, only: real64
     use, intrinsic :: iso_fortran_env, only: real128
 
+    use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_next_after
+    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_value
+
     use, non_intrinsic :: ieee_class_fortran, only: is_ieee_either_zero
+    use, non_intrinsic :: ieee_class_fortran, only: is_ieee_negative_inf
+    use, non_intrinsic :: ieee_class_fortran, only: is_ieee_positive_inf
 
 
     implicit none
@@ -12,6 +19,7 @@ module compare_reals_fortran
 
     private
     public  :: eq_transfer
+    public  :: is_contained_by_next_out
     public  :: le_and_ge
 
 
@@ -40,6 +48,33 @@ module compare_reals_fortran
         end function eq_transfer_real128
 
     end interface eq_transfer
+
+
+    interface is_contained_by_next_out
+        !! version: experimental
+        !! return `(ieee_next_down(x) .lt. y) .and. (y .lt. ieee_next_up(x))`
+
+        module pure elemental logical function is_contained_by_next_out_real32(x, y) result(is_equal)
+
+            real(real32), intent(in) :: x, y
+
+        end function is_contained_by_next_out_real32
+
+
+        module pure elemental logical function is_contained_by_next_out_real64(x, y) result(is_equal)
+
+            real(real64), intent(in) :: x, y
+
+        end function is_contained_by_next_out_real64
+
+
+        module pure elemental logical function is_contained_by_next_out_real128(x, y) result(is_equal)
+
+            real(real128), intent(in) :: x, y
+
+        end function is_contained_by_next_out_real128
+
+    end interface is_contained_by_next_out
 
 
     interface le_and_ge

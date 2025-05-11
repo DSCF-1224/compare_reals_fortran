@@ -10,7 +10,7 @@
     <meta name="author" content="" >
     <link rel="icon" href="../favicon.png">
 
-    <title>eq_transfer &ndash; compare_reals_fortran</title>
+    <title>is_contained_by_next_out &ndash; compare_reals_fortran</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -74,7 +74,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>eq_transfer
+    <h1>is_contained_by_next_out
       <small>Interface</small>
       
     </h1>
@@ -100,7 +100,7 @@
           <ol class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href='../sourcefile/compare_reals_fortran.f90.html'>compare_reals_fortran.f90</a></li>
                 <li class="breadcrumb-item"><a href='../module/compare_reals_fortran.html'>compare_reals_fortran</a></li>
-            <li class="breadcrumb-item active" aria-current="page">eq_transfer</li>
+            <li class="breadcrumb-item active" aria-current="page">is_contained_by_next_out</li>
           </ol>
         </nav>
       </div>
@@ -138,9 +138,9 @@
       </a>
       <div id="funcs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/eq_transfer.html#proc-eq_transfer_real128">eq_transfer_real128</a>
-            <a class="list-group-item" href="../interface/eq_transfer.html#proc-eq_transfer_real32">eq_transfer_real32</a>
-            <a class="list-group-item" href="../interface/eq_transfer.html#proc-eq_transfer_real64">eq_transfer_real64</a>
+            <a class="list-group-item" href="../interface/is_contained_by_next_out.html#proc-is_contained_by_next_out_real128">is_contained_by_next_out_real128</a>
+            <a class="list-group-item" href="../interface/is_contained_by_next_out.html#proc-is_contained_by_next_out_real32">is_contained_by_next_out_real32</a>
+            <a class="list-group-item" href="../interface/is_contained_by_next_out.html#proc-is_contained_by_next_out_real64">is_contained_by_next_out_real64</a>
         </div>
       </div>
     </div>
@@ -160,12 +160,12 @@
     </div>
 
     <div class="col-md-9" id='text'>
-      <h2>public interface eq_transfer</h2>
-      <p>return <code>all( transfer( x, 1, storage_size(x)/storage_size(1) ) .eq. transfer( y, 1, storage_size(x)/storage_size(1) ) )</code></p>
+      <h2>public interface is_contained_by_next_out</h2>
+      <p>return <code>(ieee_next_down(x) .lt. y) .and. (y .lt. ieee_next_up(x))</code></p>
 <br>
         <h2>Functions</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-eq_transfer_real128"></span> <h3>private pure elemental module function eq_transfer_real128(x, y) result(is_equal)  
+    <div class="card-header codesum"><span class="anchor" id="proc-is_contained_by_next_out_real128"></span> <h3>private pure elemental module function is_contained_by_next_out_real128(x, y) result(is_equal)  
 </h3></div>
     <div class="card-body">
         
@@ -183,7 +183,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~3"></span>
+              <span class="anchor" id="variable-x~6"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -198,7 +198,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y~3"></span>
+              <span class="anchor" id="variable-y~6"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -224,7 +224,7 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-eq_transfer_real32"></span> <h3>private pure elemental module function eq_transfer_real32(x, y) result(is_equal)  
+    <div class="card-header codesum"><span class="anchor" id="proc-is_contained_by_next_out_real32"></span> <h3>private pure elemental module function is_contained_by_next_out_real32(x, y) result(is_equal)  
 </h3></div>
     <div class="card-body">
         
@@ -242,7 +242,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x"></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -257,7 +257,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y"></span>
+              <span class="anchor" id="variable-y~4"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -283,7 +283,7 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-eq_transfer_real64"></span> <h3>private pure elemental module function eq_transfer_real64(x, y) result(is_equal)  
+    <div class="card-header codesum"><span class="anchor" id="proc-is_contained_by_next_out_real64"></span> <h3>private pure elemental module function is_contained_by_next_out_real64(x, y) result(is_equal)  
 </h3></div>
     <div class="card-body">
         
@@ -301,7 +301,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~2"></span>
+              <span class="anchor" id="variable-x~5"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -316,7 +316,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y~2"></span>
+              <span class="anchor" id="variable-y~5"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
