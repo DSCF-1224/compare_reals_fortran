@@ -1,4 +1,4 @@
-program test_eq_transfer
+program test_is_contained_by_next_out
 
     use, intrinsic :: iso_fortran_env, only: real32
     use, intrinsic :: iso_fortran_env, only: real64
@@ -6082,4 +6082,4 @@ program test_eq_transfer
 
     end subroutine test_real128
 
-end program test_eq_transfer
+end program test_is_contained_by_next_out

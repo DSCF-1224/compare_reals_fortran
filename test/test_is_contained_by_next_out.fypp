@@ -20,7 +20,7 @@
 #:set COUNT_ERROR_STOP = 1
 
 #:endmute
-program test_eq_transfer
+program test_is_contained_by_next_out
 
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
@@ -92,4 +92,4 @@ program test_eq_transfer
     #:del SUBROUTINE_NAME
 
     #:endfor
-end program test_eq_transfer
+end program test_is_contained_by_next_out
