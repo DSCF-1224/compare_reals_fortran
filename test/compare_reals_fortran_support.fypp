@@ -51,27 +51,22 @@ module compare_reals_fortran_support
 
         #:if INTERFACE_NAME == "set_negative_huge"
         x = - huge(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_one"
+        #:elif INTERFACE_NAME == "set_negative_one"
         x = -1.0_${KIND}$
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_epsilon"
+        #:elif INTERFACE_NAME == "set_negative_epsilon"
         x = - epsilon(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_negative_tiny"
+        #:elif INTERFACE_NAME == "set_negative_tiny"
         x = - tiny(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_tiny"
+        #:elif INTERFACE_NAME == "set_positive_tiny"
         x = tiny(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_epsilon"
+        #:elif INTERFACE_NAME == "set_positive_epsilon"
         x = epsilon(x)
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_one"
+        #:elif INTERFACE_NAME == "set_positive_one"
         x = 1.0_${KIND}$
-        #:endif
-        #:if INTERFACE_NAME == "set_positive_huge"
+        #:elif INTERFACE_NAME == "set_positive_huge"
         x = huge(x)
+        #:else
+            #:stop "The implementation is required: {}".format(INTERFACE_NAME)
         #:endif
 
     end subroutine ${SUBROUTINE_NAME}$
