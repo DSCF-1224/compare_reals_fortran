@@ -6,7 +6,9 @@
         "set_ieee_negative_inf"       , &
         "set_negative_huge"           , &
         "set_negative_huge_next_up"   , &
+        "set_negative_one_next_down"  , &
         "set_negative_one"            , &
+        "set_negative_one_next_up"    , &
         "set_negative_epsilon"        , &
         "set_negative_tiny"           , &
         "set_ieee_negative_zero"      , &

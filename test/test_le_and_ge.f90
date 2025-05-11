@@ -70,7 +70,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_negative_one(y)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.4"
@@ -84,7 +84,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_negative_epsilon(y)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.5"
@@ -98,7 +98,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.6"
@@ -112,7 +112,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.7"
@@ -126,7 +126,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.8"
@@ -140,7 +140,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_tiny(y)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.9"
@@ -154,7 +154,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_epsilon(y)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.10"
@@ -168,7 +168,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_one(y)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.11"
@@ -182,7 +182,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_huge_next_down(y)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.12"
@@ -196,7 +196,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_huge(y)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.13"
@@ -210,7 +210,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.14"
@@ -223,8 +223,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.15"
@@ -237,11 +237,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_inf(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.16"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.16"
             end if
 
         end block
@@ -252,7 +252,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.17"
@@ -266,10 +266,10 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_one(y)
+            call set_negative_huge(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.18"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.18"
             end if
 
         end block
@@ -280,7 +280,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.19"
@@ -294,7 +294,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.20"
@@ -308,7 +308,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.21"
@@ -322,7 +322,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.22"
@@ -336,7 +336,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.23"
@@ -350,7 +350,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.24"
@@ -364,7 +364,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_one(y)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.25"
@@ -378,7 +378,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.26"
@@ -392,7 +392,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_huge(y)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.27"
@@ -406,7 +406,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.28"
@@ -419,8 +419,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.29"
@@ -433,8 +433,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_huge(y)
+            call set_negative_huge(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.30"
@@ -447,11 +447,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge(x)
+            call set_positive_huge(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.31"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.31"
             end if
 
         end block
@@ -461,8 +461,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_one(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.32"
@@ -476,7 +476,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_negative_epsilon(y)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.33"
@@ -490,7 +490,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_negative_tiny(y)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.34"
@@ -504,10 +504,10 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge_next_up(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.35"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.35"
             end if
 
         end block
@@ -518,7 +518,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.36"
@@ -532,7 +532,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_tiny(y)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.37"
@@ -546,7 +546,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.38"
@@ -560,7 +560,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_one(y)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.39"
@@ -574,7 +574,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.40"
@@ -588,7 +588,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_huge(y)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.41"
@@ -602,7 +602,7 @@ program test_le_and_ge
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.42"
@@ -615,8 +615,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.43"
@@ -629,8 +629,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.44"
@@ -643,8 +643,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.45"
@@ -657,11 +657,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_one(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge_next_down(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.46"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.46"
             end if
 
         end block
@@ -671,8 +671,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.47"
@@ -685,8 +685,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.48"
@@ -699,8 +699,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.49"
@@ -713,8 +713,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.50"
@@ -727,8 +727,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.51"
@@ -741,11 +741,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_down(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.52"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.52"
             end if
 
         end block
@@ -755,8 +755,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_one(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.53"
@@ -769,8 +769,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.54"
@@ -783,8 +783,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.55"
@@ -797,8 +797,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.56"
@@ -811,8 +811,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.57"
@@ -825,8 +825,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.58"
@@ -839,8 +839,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.59"
@@ -853,8 +853,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_one(y)
+            call set_negative_one_next_down(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.60"
@@ -867,11 +867,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_positive_one(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.61"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.61"
             end if
 
         end block
@@ -881,8 +881,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.62"
@@ -895,8 +895,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.63"
@@ -909,8 +909,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.64"
@@ -923,8 +923,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_tiny(y)
+            call set_negative_one(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.65"
@@ -937,8 +937,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_negative_one(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.66"
@@ -951,8 +951,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_one(y)
+            call set_negative_one(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.67"
@@ -965,8 +965,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.68"
@@ -979,11 +979,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge(y)
+            call set_negative_one(x)
+            call set_negative_one(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.69"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.69"
             end if
 
         end block
@@ -993,8 +993,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.70"
@@ -1007,8 +1007,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.71"
@@ -1021,8 +1021,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge(y)
+            call set_negative_one(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.72"
@@ -1035,8 +1035,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.73"
@@ -1049,8 +1049,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_one(y)
+            call set_negative_one(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.74"
@@ -1063,8 +1063,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_epsilon(y)
+            call set_negative_one(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.75"
@@ -1077,11 +1077,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_tiny(y)
+            call set_negative_one(x)
+            call set_positive_epsilon(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.76"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.76"
             end if
 
         end block
@@ -1091,8 +1091,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.77"
@@ -1105,8 +1105,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.78"
@@ -1119,8 +1119,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_tiny(y)
+            call set_negative_one(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.79"
@@ -1133,8 +1133,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_one(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.80"
@@ -1147,8 +1147,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_one(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.81"
@@ -1161,8 +1161,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.82"
@@ -1175,8 +1175,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_up(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.83"
@@ -1189,8 +1189,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.84"
@@ -1203,8 +1203,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.85"
@@ -1217,11 +1217,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_up(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.86"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.86"
             end if
 
         end block
@@ -1231,8 +1231,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.87"
@@ -1245,8 +1245,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_one(y)
+            call set_negative_one_next_up(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.88"
@@ -1259,8 +1259,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.89"
@@ -1273,8 +1273,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.90"
@@ -1287,36 +1287,36 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.91"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.92"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(x)
             call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.91"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.92"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.93"
@@ -1329,8 +1329,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.94"
@@ -1343,8 +1343,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_one(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.95"
@@ -1357,8 +1357,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.96"
@@ -1371,8 +1371,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.97"
@@ -1385,8 +1385,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.98"
@@ -1399,8 +1399,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.99"
@@ -1413,8 +1413,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.100"
@@ -1427,8 +1427,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.101"
@@ -1441,8 +1441,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_one(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.102"
@@ -1455,11 +1455,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_negative_epsilon(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.103"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.103"
             end if
 
         end block
@@ -1469,7 +1469,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1483,11 +1483,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_ieee_negative_zero(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.105"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.105"
             end if
 
         end block
@@ -1497,11 +1497,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_ieee_positive_zero(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.106"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.106"
             end if
 
         end block
@@ -1511,7 +1511,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1525,7 +1525,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1539,7 +1539,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1553,7 +1553,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1567,7 +1567,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1581,7 +1581,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(x)
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1595,7 +1595,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
+            call set_negative_tiny(x)
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1609,7 +1609,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
+            call set_negative_tiny(x)
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1623,7 +1623,7 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
+            call set_negative_tiny(x)
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
@@ -1637,8 +1637,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one(y)
+            call set_negative_tiny(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.116"
@@ -1651,8 +1651,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon(y)
+            call set_negative_tiny(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.117"
@@ -1665,8 +1665,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.118"
@@ -1679,8 +1679,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.119"
@@ -1693,25 +1693,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.120"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_positive_tiny(x)
-            call set_positive_tiny(y)
+            call set_negative_tiny(x)
+            call set_negative_tiny(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.121"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.120"
             end if
 
         end block
@@ -1721,8 +1707,22 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.121"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.122"
@@ -1735,8 +1735,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_one(y)
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.123"
@@ -1749,8 +1749,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.124"
@@ -1763,8 +1763,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_tiny(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.125"
@@ -1777,8 +1777,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_tiny(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.126"
@@ -1791,8 +1791,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_tiny(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.127"
@@ -1805,8 +1805,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_tiny(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.128"
@@ -1819,8 +1819,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.129"
@@ -1833,8 +1833,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.130"
@@ -1847,8 +1847,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.131"
@@ -1861,8 +1861,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.132"
@@ -1875,8 +1875,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.133"
@@ -1889,8 +1889,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.134"
@@ -1903,8 +1903,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_tiny(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.135"
@@ -1917,11 +1917,25 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.136"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.136"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.137"
             end if
 
         end block
@@ -1931,11 +1945,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_one(y)
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.137"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.138"
             end if
 
         end block
@@ -1945,22 +1959,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.138"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_positive_epsilon(x)
-            call set_positive_huge(y)
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.139"
@@ -1973,8 +1973,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_negative_zero(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.140"
@@ -1987,8 +1987,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_zero(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.141"
@@ -2001,8 +2001,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_zero(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.142"
@@ -2015,8 +2015,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_zero(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.143"
@@ -2029,8 +2029,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one(y)
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.144"
@@ -2043,8 +2043,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon(y)
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.145"
@@ -2057,8 +2057,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_tiny(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.146"
@@ -2071,8 +2071,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.147"
@@ -2085,8 +2085,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.148"
@@ -2099,8 +2099,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_tiny(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.149"
@@ -2113,8 +2113,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_epsilon(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.150"
@@ -2127,11 +2127,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_one(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.151"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.151"
             end if
 
         end block
@@ -2141,8 +2141,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.152"
@@ -2155,11 +2155,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge(y)
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.153"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.153"
             end if
 
         end block
@@ -2169,11 +2169,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.154"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.154"
             end if
 
         end block
@@ -2183,8 +2183,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.155"
@@ -2197,8 +2197,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge(y)
+            call set_ieee_positive_zero(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.156"
@@ -2211,8 +2211,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_positive_zero(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.157"
@@ -2225,8 +2225,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one(y)
+            call set_ieee_positive_zero(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.158"
@@ -2239,8 +2239,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon(y)
+            call set_ieee_positive_zero(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.159"
@@ -2253,8 +2253,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_tiny(y)
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.160"
@@ -2267,8 +2267,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.161"
@@ -2281,8 +2281,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.162"
@@ -2295,8 +2295,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_tiny(y)
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.163"
@@ -2309,8 +2309,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_epsilon(y)
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.164"
@@ -2323,8 +2323,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_one(y)
+            call set_positive_tiny(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.165"
@@ -2337,11 +2337,11 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.166"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.166"
             end if
 
         end block
@@ -2351,8 +2351,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge(y)
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.167"
@@ -2365,8 +2365,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.168"
@@ -2379,8 +2379,8 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
-            call set_positive_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.169"
@@ -2393,11 +2393,795 @@ program test_le_and_ge
 
             real(real32) :: x, y
 
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.170"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.171"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.172"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.173"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.174"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.175"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.176"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.177"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.178"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.179"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.180"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.181"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.182"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.183"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.184"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.185"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.186"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.187"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.188"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.189"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.190"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.191"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.192"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.193"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.194"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.195"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.196"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.197"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.198"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.199"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.200"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.201"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.202"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.203"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.204"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_one(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.205"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.206"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.207"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.208"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.209"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.210"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.211"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.212"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.213"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.214"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.215"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.216"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.217"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.218"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.219"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.220"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.221"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.222"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.223"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.224"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.225"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
             call set_positive_huge(x)
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.170"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.226"
             end if
 
         end block
@@ -2411,7 +3195,21 @@ program test_le_and_ge
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.171"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.227"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.228"
             end if
 
         end block
@@ -2425,7 +3223,21 @@ program test_le_and_ge
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.172"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.229"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.230"
             end if
 
         end block
@@ -2439,7 +3251,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.173"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.231"
             end if
 
         end block
@@ -2453,7 +3265,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.174"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.232"
             end if
 
         end block
@@ -2467,7 +3279,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.175"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.233"
             end if
 
         end block
@@ -2481,7 +3293,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.176"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.234"
             end if
 
         end block
@@ -2495,7 +3307,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.177"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.235"
             end if
 
         end block
@@ -2509,7 +3321,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.178"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.236"
             end if
 
         end block
@@ -2523,7 +3335,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.179"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.237"
             end if
 
         end block
@@ -2537,7 +3349,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.180"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.238"
             end if
 
         end block
@@ -2551,7 +3363,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.181"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.239"
             end if
 
         end block
@@ -2565,7 +3377,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.182"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.240"
             end if
 
         end block
@@ -2579,7 +3391,7 @@ program test_le_and_ge
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.183"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.241"
             end if
 
         end block
@@ -2593,7 +3405,7 @@ program test_le_and_ge
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.184"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.242"
             end if
 
         end block
@@ -2607,7 +3419,21 @@ program test_le_and_ge
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.185"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.243"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.244"
             end if
 
         end block
@@ -2621,7 +3447,21 @@ program test_le_and_ge
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.186"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.245"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.246"
             end if
 
         end block
@@ -2635,7 +3475,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.187"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.247"
             end if
 
         end block
@@ -2649,7 +3489,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.188"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.248"
             end if
 
         end block
@@ -2663,7 +3503,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.189"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.249"
             end if
 
         end block
@@ -2677,7 +3517,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.190"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.250"
             end if
 
         end block
@@ -2691,7 +3531,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.191"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.251"
             end if
 
         end block
@@ -2705,7 +3545,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.192"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.252"
             end if
 
         end block
@@ -2719,7 +3559,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.193"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.253"
             end if
 
         end block
@@ -2733,7 +3573,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.194"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.254"
             end if
 
         end block
@@ -2747,7 +3587,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.195"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.255"
             end if
 
         end block
@@ -2761,7 +3601,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.196"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.256"
             end if
 
         end block
@@ -2780,846 +3620,6 @@ program test_le_and_ge
             call set_ieee_negative_inf(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.197"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.198"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.199"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.200"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.201"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.202"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.203"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.204"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.205"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.206"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.207"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.208"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.209"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.210"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.211"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.212"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.213"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.214"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.215"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.216"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.217"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.218"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.219"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.220"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.221"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.222"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.223"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.224"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.225"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.226"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge_next_up(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.227"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.228"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.229"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.230"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.231"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.232"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.233"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.234"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.235"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.236"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.237"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.238"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.239"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.240"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.241"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_one(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.242"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.243"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.244"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.245"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.246"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.247"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.248"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.249"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.250"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.251"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.252"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.253"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.254"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.255"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.256"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_epsilon(y)
-
-            if ( .not. le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.257"
             end if
 
@@ -3630,8 +3630,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.258"
@@ -3644,8 +3644,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.259"
@@ -3658,8 +3658,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.260"
@@ -3672,8 +3672,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.261"
@@ -3686,8 +3686,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.262"
@@ -3700,8 +3700,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_one(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.263"
@@ -3714,8 +3714,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.264"
@@ -3728,8 +3728,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.265"
@@ -3742,8 +3742,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.266"
@@ -3756,8 +3756,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.267"
@@ -3770,8 +3770,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.268"
@@ -3784,8 +3784,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.269"
@@ -3798,8 +3798,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_one(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.270"
@@ -3812,8 +3812,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.271"
@@ -3826,11 +3826,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_inf(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.272"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.272"
             end if
 
         end block
@@ -3840,8 +3840,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.273"
@@ -3854,11 +3854,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge(x)
+            call set_negative_huge(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.274"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.274"
             end if
 
         end block
@@ -3868,8 +3868,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_tiny(y)
+            call set_negative_huge(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.275"
@@ -3882,8 +3882,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.276"
@@ -3896,8 +3896,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_one(y)
+            call set_negative_huge(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.277"
@@ -3910,8 +3910,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.278"
@@ -3924,8 +3924,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_huge(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.279"
@@ -3938,8 +3938,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.280"
@@ -3952,8 +3952,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.281"
@@ -3966,8 +3966,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.282"
@@ -3980,8 +3980,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.283"
@@ -3994,8 +3994,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_one(y)
+            call set_negative_huge(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.284"
@@ -4008,8 +4008,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.285"
@@ -4022,8 +4022,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_tiny(y)
+            call set_negative_huge(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.286"
@@ -4036,11 +4036,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge(x)
+            call set_positive_huge(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.287"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.287"
             end if
 
         end block
@@ -4050,11 +4050,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_inf(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.288"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.288"
             end if
 
         end block
@@ -4064,8 +4064,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.289"
@@ -4078,8 +4078,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.290"
@@ -4092,11 +4092,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_one(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge_next_up(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.291"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.291"
             end if
 
         end block
@@ -4106,8 +4106,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.292"
@@ -4120,8 +4120,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.293"
@@ -4134,8 +4134,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.294"
@@ -4148,8 +4148,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.295"
@@ -4162,8 +4162,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.296"
@@ -4176,8 +4176,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.297"
@@ -4190,8 +4190,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_one(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.298"
@@ -4204,8 +4204,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.299"
@@ -4218,8 +4218,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.300"
@@ -4232,11 +4232,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_one(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.301"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.301"
             end if
 
         end block
@@ -4246,11 +4246,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge_next_down(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.302"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.302"
             end if
 
         end block
@@ -4260,8 +4260,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.303"
@@ -4274,8 +4274,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.304"
@@ -4288,8 +4288,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_one(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.305"
@@ -4302,8 +4302,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.306"
@@ -4316,8 +4316,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.307"
@@ -4330,11 +4330,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_down(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.308"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.308"
             end if
 
         end block
@@ -4344,8 +4344,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.309"
@@ -4358,8 +4358,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.310"
@@ -4372,8 +4372,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.311"
@@ -4386,8 +4386,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.312"
@@ -4400,8 +4400,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.313"
@@ -4414,8 +4414,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.314"
@@ -4428,8 +4428,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.315"
@@ -4442,8 +4442,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.316"
@@ -4456,11 +4456,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_positive_one(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.317"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.317"
             end if
 
         end block
@@ -4470,8 +4470,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.318"
@@ -4484,8 +4484,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_one(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.319"
@@ -4498,8 +4498,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.320"
@@ -4512,8 +4512,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_one(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.321"
@@ -4526,8 +4526,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.322"
@@ -4540,8 +4540,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.323"
@@ -4554,8 +4554,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_one(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.324"
@@ -4568,11 +4568,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one(x)
+            call set_negative_one(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.325"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.325"
             end if
 
         end block
@@ -4582,8 +4582,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one(y)
+            call set_negative_one(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.326"
@@ -4596,7 +4596,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4610,7 +4610,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4624,7 +4624,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4638,7 +4638,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4652,7 +4652,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4666,11 +4666,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_positive_epsilon(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.332"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.332"
             end if
 
         end block
@@ -4680,7 +4680,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4694,7 +4694,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4708,7 +4708,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4722,7 +4722,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
+            call set_negative_one(x)
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4736,7 +4736,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
+            call set_negative_one_next_up(x)
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4750,7 +4750,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
+            call set_negative_one_next_up(x)
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4764,7 +4764,7 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
+            call set_negative_one_next_up(x)
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
@@ -4778,8 +4778,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.340"
@@ -4792,8 +4792,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.341"
@@ -4806,11 +4806,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_up(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.342"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.342"
             end if
 
         end block
@@ -4820,8 +4820,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.343"
@@ -4834,8 +4834,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_up(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.344"
@@ -4848,8 +4848,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.345"
@@ -4862,8 +4862,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.346"
@@ -4876,11 +4876,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_one(y)
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.347"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.347"
             end if
 
         end block
@@ -4890,8 +4890,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.348"
@@ -4904,8 +4904,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_up(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.349"
@@ -4918,8 +4918,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.350"
@@ -4932,8 +4932,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.351"
@@ -4946,8 +4946,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.352"
@@ -4960,8 +4960,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.353"
@@ -4974,8 +4974,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.354"
@@ -4988,8 +4988,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.355"
@@ -5002,8 +5002,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_tiny(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.356"
@@ -5016,8 +5016,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_epsilon(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.357"
@@ -5030,8 +5030,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.358"
@@ -5044,11 +5044,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon(x)
+            call set_negative_epsilon(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.359"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.359"
             end if
 
         end block
@@ -5058,8 +5058,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.360"
@@ -5072,8 +5072,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_one(y)
+            call set_negative_epsilon(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.361"
@@ -5086,11 +5086,11 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_epsilon(x)
+            call set_ieee_positive_zero(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.362"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.362"
             end if
 
         end block
@@ -5100,8 +5100,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.363"
@@ -5114,8 +5114,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.364"
@@ -5128,8 +5128,8 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
-            call set_positive_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.365"
@@ -5142,11 +5142,1635 @@ program test_le_and_ge
 
             real(real64) :: x, y
 
+            call set_negative_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.366"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.367"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.368"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.369"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.370"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.371"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.372"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.373"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.374"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.375"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.376"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.377"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.378"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.379"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.380"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.381"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.382"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.383"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.384"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.385"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.386"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.387"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.388"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.389"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.390"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.391"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.392"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.393"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.394"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.395"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.396"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.397"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.398"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.399"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.400"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.401"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.402"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.403"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.404"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.405"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.406"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.407"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.408"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.409"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.410"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.411"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.412"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.413"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.414"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.415"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.416"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.417"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.418"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.419"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.420"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.421"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.422"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.423"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.424"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.425"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.426"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.427"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.428"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.429"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.430"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.431"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.432"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.433"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.434"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.435"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.436"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.437"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.438"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.439"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.440"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.441"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.442"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.443"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.444"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.445"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.446"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.447"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.448"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.449"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.450"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.451"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.452"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.453"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.454"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.455"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.456"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.457"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.458"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.459"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.460"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_one(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.461"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.462"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.463"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.464"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.465"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.466"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.467"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.468"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.469"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.470"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.471"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.472"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.473"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.474"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.475"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.476"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.477"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.478"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.479"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.480"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.481"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
             call set_positive_huge(x)
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.366"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.482"
             end if
 
         end block
@@ -5160,7 +6784,21 @@ program test_le_and_ge
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.367"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.483"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.484"
             end if
 
         end block
@@ -5174,7 +6812,21 @@ program test_le_and_ge
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.368"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.485"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.486"
             end if
 
         end block
@@ -5188,7 +6840,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.369"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.487"
             end if
 
         end block
@@ -5202,7 +6854,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.370"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.488"
             end if
 
         end block
@@ -5216,7 +6868,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.371"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.489"
             end if
 
         end block
@@ -5230,7 +6882,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.372"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.490"
             end if
 
         end block
@@ -5244,7 +6896,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.373"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.491"
             end if
 
         end block
@@ -5258,7 +6910,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.374"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.492"
             end if
 
         end block
@@ -5272,7 +6924,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.375"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.493"
             end if
 
         end block
@@ -5286,7 +6938,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.376"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.494"
             end if
 
         end block
@@ -5300,7 +6952,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.377"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.495"
             end if
 
         end block
@@ -5314,7 +6966,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.378"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.496"
             end if
 
         end block
@@ -5328,7 +6980,7 @@ program test_le_and_ge
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.379"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.497"
             end if
 
         end block
@@ -5342,7 +6994,7 @@ program test_le_and_ge
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.380"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.498"
             end if
 
         end block
@@ -5356,7 +7008,21 @@ program test_le_and_ge
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.381"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.499"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.500"
             end if
 
         end block
@@ -5370,7 +7036,21 @@ program test_le_and_ge
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.382"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.501"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.502"
             end if
 
         end block
@@ -5384,7 +7064,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.383"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.503"
             end if
 
         end block
@@ -5398,7 +7078,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.384"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.504"
             end if
 
         end block
@@ -5412,7 +7092,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.385"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.505"
             end if
 
         end block
@@ -5426,7 +7106,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.386"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.506"
             end if
 
         end block
@@ -5440,7 +7120,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.387"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.507"
             end if
 
         end block
@@ -5454,7 +7134,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.388"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.508"
             end if
 
         end block
@@ -5468,7 +7148,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.389"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.509"
             end if
 
         end block
@@ -5482,7 +7162,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.390"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.510"
             end if
 
         end block
@@ -5496,7 +7176,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.391"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.511"
             end if
 
         end block
@@ -5510,7 +7190,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.392"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.512"
             end if
 
         end block
@@ -5529,1686 +7209,6 @@ program test_le_and_ge
             call set_ieee_negative_inf(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.393"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.394"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.395"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.396"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.397"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.398"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.399"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.400"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.401"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.402"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.403"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.404"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.405"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.406"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.407"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.408"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.409"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.410"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.411"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.412"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.413"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.414"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.415"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.416"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.417"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.418"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.419"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.420"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.421"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.422"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge_next_up(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.423"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.424"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.425"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.426"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.427"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.428"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.429"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.430"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.431"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.432"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.433"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.434"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.435"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.436"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.437"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_one(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.438"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.439"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.440"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.441"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.442"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.443"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.444"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.445"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.446"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.447"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.448"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.449"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.450"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.451"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.452"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_epsilon(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.453"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.454"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.455"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.456"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.457"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.458"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.459"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.460"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.461"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.462"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.463"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.464"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.465"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.466"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.467"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_tiny(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.468"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.469"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.470"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.471"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.472"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.473"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.474"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.475"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.476"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.477"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.478"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.479"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.480"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.481"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.482"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.483"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.484"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.485"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.486"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.487"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.488"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.489"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.490"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.491"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.492"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.493"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.494"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.495"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.496"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.497"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_zero(y)
-
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.498"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_positive_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.499"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_positive_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.500"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_positive_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.501"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_positive_huge_next_down(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.502"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_positive_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.503"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.504"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_ieee_negative_inf(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.505"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_negative_huge(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.506"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_negative_huge_next_up(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.507"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_negative_one(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.508"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_negative_epsilon(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.509"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_negative_tiny(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.510"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.511"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
-
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.512"
-            end if
-
-        end block
-
-
-        block
-
-            real(real128) :: x, y
-
-            call set_positive_tiny(x)
-            call set_positive_tiny(y)
-
-            if ( .not. le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.513"
             end if
 
@@ -7219,8 +7219,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.514"
@@ -7233,8 +7233,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_one(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.515"
@@ -7247,8 +7247,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.516"
@@ -7261,8 +7261,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.517"
@@ -7275,8 +7275,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.518"
@@ -7289,8 +7289,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.519"
@@ -7303,8 +7303,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.520"
@@ -7317,8 +7317,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.521"
@@ -7331,8 +7331,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.522"
@@ -7345,8 +7345,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.523"
@@ -7359,8 +7359,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.524"
@@ -7373,8 +7373,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.525"
@@ -7387,8 +7387,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.526"
@@ -7401,8 +7401,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.527"
@@ -7415,11 +7415,11 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_inf(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.528"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.528"
             end if
 
         end block
@@ -7429,8 +7429,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_one(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.529"
@@ -7443,11 +7443,11 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge(x)
+            call set_negative_huge(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.530"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.530"
             end if
 
         end block
@@ -7457,8 +7457,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge(y)
+            call set_negative_huge(x)
+            call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.531"
@@ -7471,8 +7471,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.532"
@@ -7485,8 +7485,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.533"
@@ -7499,8 +7499,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.534"
@@ -7513,8 +7513,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge(x)
+            call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.535"
@@ -7527,8 +7527,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one(y)
+            call set_negative_huge(x)
+            call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.536"
@@ -7541,8 +7541,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.537"
@@ -7555,8 +7555,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_tiny(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.538"
@@ -7569,8 +7569,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.539"
@@ -7583,8 +7583,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge(x)
+            call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.540"
@@ -7597,8 +7597,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_tiny(y)
+            call set_negative_huge(x)
+            call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.541"
@@ -7611,8 +7611,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge(x)
+            call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.542"
@@ -7625,11 +7625,11 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_one(y)
+            call set_negative_huge(x)
+            call set_positive_huge(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.543"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.543"
             end if
 
         end block
@@ -7639,8 +7639,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.544"
@@ -7653,8 +7653,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.545"
@@ -7667,8 +7667,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.546"
@@ -7681,11 +7681,11 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge_next_up(y)
 
-            if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.547"
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.547"
             end if
 
         end block
@@ -7695,8 +7695,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.548"
@@ -7709,8 +7709,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.549"
@@ -7723,8 +7723,8 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_up(y)
 
             if ( le_and_ge(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.550"
@@ -7737,7 +7737,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7751,7 +7751,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7765,7 +7765,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7779,7 +7779,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7793,7 +7793,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7807,7 +7807,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7821,7 +7821,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7835,11 +7835,11 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_positive_huge_next_down(y)
 
-            if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.558"
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.558"
             end if
 
         end block
@@ -7849,7 +7849,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7863,7 +7863,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(x)
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7877,7 +7877,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge(x)
+            call set_negative_one_next_down(x)
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7891,7 +7891,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge(x)
+            call set_negative_one_next_down(x)
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7905,7 +7905,7 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
-            call set_positive_huge(x)
+            call set_negative_one_next_down(x)
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
@@ -7919,11 +7919,2503 @@ program test_le_and_ge
 
             real(real128) :: x, y
 
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.564"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.565"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.566"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.567"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.568"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.569"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.570"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.571"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.572"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.573"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.574"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.575"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.576"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.577"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.578"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.579"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.580"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.581"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.582"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.583"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.584"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.585"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.586"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.587"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.588"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.589"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.590"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.591"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.592"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.593"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.594"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.595"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.596"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.597"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.598"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.599"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.600"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.601"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.602"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.603"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.604"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.605"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.606"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.607"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.608"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.609"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.610"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.611"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.612"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.613"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.614"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.615"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.616"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.617"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.618"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.619"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.620"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.621"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.622"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.623"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.624"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.625"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.626"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.627"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.628"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.629"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.630"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.631"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.632"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.633"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.634"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.635"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.636"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.637"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.638"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.639"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.640"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.641"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.642"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.643"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.644"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.645"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.646"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.647"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.648"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.649"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.650"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.651"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.652"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.653"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.654"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.655"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.656"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.657"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.658"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.659"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.660"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.661"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.662"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.663"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.664"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.665"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.666"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.667"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.668"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.669"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.670"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.671"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.672"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.673"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.674"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.675"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.676"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.677"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.678"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.679"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.680"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.681"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.682"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.683"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.684"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.685"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.686"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.687"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.688"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.689"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.690"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.691"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.692"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.693"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.694"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.695"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.696"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.697"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.698"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.699"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.700"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.701"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.702"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.703"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.704"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.705"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.706"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.707"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.708"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.709"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.710"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.711"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.712"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.713"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.714"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.715"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.716"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_one(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.717"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.718"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.719"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.720"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.721"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.722"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.723"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.724"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.725"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.726"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.727"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.728"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.729"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.730"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.731"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.732"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_one(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.733"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( .not. le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.734"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.735"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.736"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_inf(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.737"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_huge(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.738"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_huge_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.739"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.740"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
             call set_positive_huge(x)
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.564"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.741"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.742"
             end if
 
         end block
@@ -7937,7 +10429,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.565"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.743"
             end if
 
         end block
@@ -7951,7 +10443,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.566"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.744"
             end if
 
         end block
@@ -7965,7 +10457,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.567"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.745"
             end if
 
         end block
@@ -7979,7 +10471,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.568"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.746"
             end if
 
         end block
@@ -7993,7 +10485,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.569"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.747"
             end if
 
         end block
@@ -8007,7 +10499,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.570"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.748"
             end if
 
         end block
@@ -8021,7 +10513,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.571"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.749"
             end if
 
         end block
@@ -8035,7 +10527,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.572"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.750"
             end if
 
         end block
@@ -8049,7 +10541,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.573"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.751"
             end if
 
         end block
@@ -8063,7 +10555,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.574"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.752"
             end if
 
         end block
@@ -8077,7 +10569,7 @@ program test_le_and_ge
             call set_ieee_negative_inf(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.575"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.753"
             end if
 
         end block
@@ -8091,7 +10583,7 @@ program test_le_and_ge
             call set_negative_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.576"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.754"
             end if
 
         end block
@@ -8105,7 +10597,21 @@ program test_le_and_ge
             call set_negative_huge_next_up(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.577"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.755"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_down(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.756"
             end if
 
         end block
@@ -8119,7 +10625,21 @@ program test_le_and_ge
             call set_negative_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.578"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.757"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_one_next_up(y)
+
+            if ( le_and_ge(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.758"
             end if
 
         end block
@@ -8133,7 +10653,7 @@ program test_le_and_ge
             call set_negative_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.579"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.759"
             end if
 
         end block
@@ -8147,7 +10667,7 @@ program test_le_and_ge
             call set_negative_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.580"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.760"
             end if
 
         end block
@@ -8161,7 +10681,7 @@ program test_le_and_ge
             call set_ieee_negative_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.581"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.761"
             end if
 
         end block
@@ -8175,7 +10695,7 @@ program test_le_and_ge
             call set_ieee_positive_zero(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.582"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.762"
             end if
 
         end block
@@ -8189,7 +10709,7 @@ program test_le_and_ge
             call set_positive_tiny(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.583"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.763"
             end if
 
         end block
@@ -8203,7 +10723,7 @@ program test_le_and_ge
             call set_positive_epsilon(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.584"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.764"
             end if
 
         end block
@@ -8217,7 +10737,7 @@ program test_le_and_ge
             call set_positive_one(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.585"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.765"
             end if
 
         end block
@@ -8231,7 +10751,7 @@ program test_le_and_ge
             call set_positive_huge_next_down(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.586"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.766"
             end if
 
         end block
@@ -8245,7 +10765,7 @@ program test_le_and_ge
             call set_positive_huge(y)
 
             if ( le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.587"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_le_and_ge.fypp No.767"
             end if
 
         end block
@@ -8259,7 +10779,7 @@ program test_le_and_ge
             call set_ieee_positive_inf(y)
 
             if ( .not. le_and_ge(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.588"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_le_and_ge.fypp No.768"
             end if
 
         end block
