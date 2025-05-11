@@ -11,8 +11,12 @@
         "set_negative_epsilon_next_down" , &
         "set_negative_epsilon"           , &
         "set_negative_epsilon_next_up"   , &
+        "set_negative_tiny_next_down"    , &
         "set_negative_tiny"              , &
+        "set_negative_tiny_next_up"      , &
+        "set_positive_tiny_next_down"    , &
         "set_positive_tiny"              , &
+        "set_positive_tiny_next_up"      , &
         "set_positive_epsilon_next_down" , &
         "set_positive_epsilon"           , &
         "set_positive_epsilon_next_up"   , &
@@ -79,8 +83,12 @@ module compare_reals_fortran_support
         call set_negative_epsilon(x)
         #:elif INTERFACE_NAME == "set_negative_tiny"
         x = - tiny(x)
+        #:elif INTERFACE_NAME.startswith("set_negative_tiny_")
+        call set_negative_tiny(x)
         #:elif INTERFACE_NAME == "set_positive_tiny"
         x = tiny(x)
+        #:elif INTERFACE_NAME.startswith("set_positive_tiny_")
+        call set_positive_tiny(x)
         #:elif INTERFACE_NAME == "set_positive_epsilon"
         x = epsilon(x)
         #:elif INTERFACE_NAME.startswith("set_positive_epsilon_")

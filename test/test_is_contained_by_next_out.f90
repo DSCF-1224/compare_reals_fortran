@@ -154,7 +154,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.10"
@@ -168,7 +168,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.11"
@@ -182,7 +182,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.12"
@@ -196,7 +196,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_tiny(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.13"
@@ -210,7 +210,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_epsilon(y)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.14"
@@ -224,7 +224,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_one(y)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.15"
@@ -238,7 +238,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.16"
@@ -252,7 +252,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_positive_huge(y)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.17"
@@ -266,7 +266,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_negative_inf(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.18"
@@ -279,8 +279,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.19"
@@ -293,11 +293,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_one(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.20"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.20"
             end if
 
         end block
@@ -307,8 +307,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.21"
@@ -321,8 +321,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_negative_one_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.22"
@@ -335,8 +335,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge(x)
-            call set_negative_one(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.23"
@@ -350,7 +350,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_one_next_up(y)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.24"
@@ -364,10 +364,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_huge(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.25"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.25"
             end if
 
         end block
@@ -378,7 +378,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.26"
@@ -392,7 +392,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.27"
@@ -406,7 +406,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_negative_tiny(y)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.28"
@@ -420,7 +420,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.29"
@@ -434,7 +434,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.30"
@@ -448,7 +448,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.31"
@@ -462,7 +462,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.32"
@@ -476,7 +476,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_one(y)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.33"
@@ -490,7 +490,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.34"
@@ -504,7 +504,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_positive_huge(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.35"
@@ -518,7 +518,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.36"
@@ -531,8 +531,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.37"
@@ -545,8 +545,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_huge(y)
+            call set_negative_huge(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.38"
@@ -559,11 +559,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_zero(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.39"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.39"
             end if
 
         end block
@@ -573,8 +573,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_one_next_down(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.40"
@@ -587,8 +587,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_one(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.41"
@@ -601,8 +601,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_one_next_up(y)
+            call set_negative_huge(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.42"
@@ -615,8 +615,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_huge(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.43"
@@ -629,8 +629,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.44"
@@ -643,8 +643,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_huge(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.45"
@@ -657,8 +657,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_huge_next_up(x)
-            call set_negative_tiny(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.46"
@@ -672,7 +672,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.47"
@@ -686,7 +686,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.48"
@@ -700,10 +700,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_tiny(y)
+            call set_negative_huge_next_up(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.49"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.49"
             end if
 
         end block
@@ -714,7 +714,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.50"
@@ -728,7 +728,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_one(y)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.51"
@@ -742,7 +742,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.52"
@@ -756,7 +756,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.53"
@@ -770,7 +770,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.54"
@@ -783,8 +783,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.55"
@@ -797,8 +797,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.56"
@@ -811,8 +811,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.57"
@@ -825,11 +825,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_one_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.58"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.58"
             end if
 
         end block
@@ -839,8 +839,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_one(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.59"
@@ -853,8 +853,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_one_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.60"
@@ -867,8 +867,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.61"
@@ -881,8 +881,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.62"
@@ -895,8 +895,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.63"
@@ -909,8 +909,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_negative_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.64"
@@ -923,8 +923,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.65"
@@ -937,8 +937,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.66"
@@ -951,8 +951,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_positive_tiny(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.67"
@@ -965,8 +965,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.68"
@@ -979,8 +979,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_down(x)
-            call set_positive_one(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.69"
@@ -994,7 +994,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_one_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.70"
@@ -1008,7 +1008,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_one_next_down(x)
-            call set_positive_huge(y)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.71"
@@ -1022,7 +1022,7 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_negative_one_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.72"
@@ -1035,11 +1035,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_down(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.73"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.73"
             end if
 
         end block
@@ -1049,8 +1049,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.74"
@@ -1063,8 +1063,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.75"
@@ -1077,8 +1077,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_one_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.76"
@@ -1091,11 +1091,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_one(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.77"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.77"
             end if
 
         end block
@@ -1105,8 +1105,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_one_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.78"
@@ -1119,8 +1119,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.79"
@@ -1133,8 +1133,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.80"
@@ -1147,8 +1147,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.81"
@@ -1161,8 +1161,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.82"
@@ -1175,8 +1175,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.83"
@@ -1189,8 +1189,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.84"
@@ -1203,8 +1203,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.85"
@@ -1217,8 +1217,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.86"
@@ -1231,8 +1231,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_one(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.87"
@@ -1245,8 +1245,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.88"
@@ -1259,8 +1259,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_down(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.89"
@@ -1273,8 +1273,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.90"
@@ -1287,8 +1287,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_down(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.91"
@@ -1301,8 +1301,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.92"
@@ -1315,8 +1315,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.93"
@@ -1329,8 +1329,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_one_next_down(y)
+            call set_negative_one(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.94"
@@ -1343,8 +1343,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_one(y)
+            call set_negative_one(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.95"
@@ -1357,25 +1357,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_one_next_up(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.96"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_one(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.97"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.96"
             end if
 
         end block
@@ -1385,8 +1371,22 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon(y)
+            call set_negative_one(x)
+            call set_negative_one(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.97"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.98"
@@ -1399,8 +1399,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.99"
@@ -1413,8 +1413,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_negative_tiny(y)
+            call set_negative_one(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.100"
@@ -1427,8 +1427,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.101"
@@ -1441,8 +1441,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.102"
@@ -1455,8 +1455,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_positive_tiny(y)
+            call set_negative_one(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.103"
@@ -1469,8 +1469,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_positive_epsilon(y)
+            call set_negative_one(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.104"
@@ -1483,8 +1483,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_positive_one(y)
+            call set_negative_one(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.105"
@@ -1497,8 +1497,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.106"
@@ -1511,8 +1511,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_positive_huge(y)
+            call set_negative_one(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.107"
@@ -1525,8 +1525,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_one_next_up(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.108"
@@ -1539,8 +1539,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.109"
@@ -1553,8 +1553,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_one(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.110"
@@ -1567,8 +1567,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.111"
@@ -1581,8 +1581,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one_next_down(y)
+            call set_negative_one(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.112"
@@ -1595,8 +1595,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one(y)
+            call set_negative_one(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.113"
@@ -1609,8 +1609,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one_next_up(y)
+            call set_negative_one(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.114"
@@ -1623,11 +1623,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_one(x)
+            call set_ieee_positive_inf(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.115"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.115"
             end if
 
         end block
@@ -1637,8 +1637,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.116"
@@ -1651,8 +1651,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one_next_up(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.117"
@@ -1665,8 +1665,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.118"
@@ -1679,8 +1679,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.119"
@@ -1693,8 +1693,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.120"
@@ -1707,11 +1707,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_up(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.121"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.121"
             end if
 
         end block
@@ -1721,8 +1721,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.122"
@@ -1735,8 +1735,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_positive_one(y)
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.123"
@@ -1749,8 +1749,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.124"
@@ -1763,8 +1763,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_up(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.125"
@@ -1777,8 +1777,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_up(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.126"
@@ -1791,8 +1791,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_up(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.127"
@@ -1805,8 +1805,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_one_next_up(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.128"
@@ -1819,8 +1819,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.129"
@@ -1833,8 +1833,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_one_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.130"
@@ -1847,8 +1847,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_one(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.131"
@@ -1861,8 +1861,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_one_next_up(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.132"
@@ -1875,8 +1875,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.133"
@@ -1889,11 +1889,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_up(x)
+            call set_positive_epsilon(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.134"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.134"
             end if
 
         end block
@@ -1903,8 +1903,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one_next_up(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.135"
@@ -1917,8 +1917,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.136"
@@ -1931,8 +1931,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_up(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.137"
@@ -1945,8 +1945,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.138"
@@ -1959,8 +1959,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.139"
@@ -1973,8 +1973,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.140"
@@ -1987,8 +1987,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_one(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.141"
@@ -2001,8 +2001,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.142"
@@ -2015,8 +2015,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.143"
@@ -2029,8 +2029,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.144"
@@ -2043,11 +2043,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon_next_down(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.145"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.145"
             end if
 
         end block
@@ -2057,8 +2057,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_huge(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.146"
@@ -2071,8 +2071,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.147"
@@ -2085,8 +2085,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one_next_down(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.148"
@@ -2099,8 +2099,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.149"
@@ -2113,8 +2113,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one_next_up(y)
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.150"
@@ -2127,8 +2127,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.151"
@@ -2141,8 +2141,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.152"
@@ -2155,11 +2155,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.153"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.153"
             end if
 
         end block
@@ -2169,8 +2169,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_negative_tiny(y)
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.154"
@@ -2183,8 +2183,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.155"
@@ -2197,8 +2197,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.156"
@@ -2211,8 +2211,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.157"
@@ -2225,8 +2225,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.158"
@@ -2239,8 +2239,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_positive_one(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.159"
@@ -2253,8 +2253,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_epsilon_next_down(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.160"
@@ -2267,8 +2267,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.161"
@@ -2281,8 +2281,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.162"
@@ -2295,8 +2295,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.163"
@@ -2309,8 +2309,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge(y)
+            call set_negative_epsilon(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.164"
@@ -2323,8 +2323,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.165"
@@ -2337,8 +2337,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_one_next_down(y)
+            call set_negative_epsilon(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.166"
@@ -2351,8 +2351,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_one(y)
+            call set_negative_epsilon(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.167"
@@ -2365,8 +2365,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_one_next_up(y)
+            call set_negative_epsilon(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.168"
@@ -2379,11 +2379,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_epsilon(x)
+            call set_negative_epsilon(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.169"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.169"
             end if
 
         end block
@@ -2393,8 +2393,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_epsilon(y)
+            call set_negative_epsilon(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.170"
@@ -2407,8 +2407,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_epsilon(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.171"
@@ -2421,11 +2421,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
+            call set_negative_epsilon(x)
             call set_negative_tiny(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.172"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.172"
             end if
 
         end block
@@ -2435,8 +2435,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_epsilon(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.173"
@@ -2449,8 +2449,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_epsilon(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.174"
@@ -2463,7 +2463,7 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
+            call set_negative_epsilon(x)
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
@@ -2477,8 +2477,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.176"
@@ -2491,8 +2491,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_one(y)
+            call set_negative_epsilon(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.177"
@@ -2505,8 +2505,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_epsilon(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.178"
@@ -2519,8 +2519,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.179"
@@ -2533,8 +2533,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_negative_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.180"
@@ -2547,8 +2547,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.181"
@@ -2561,8 +2561,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge(y)
+            call set_negative_epsilon(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.182"
@@ -2575,8 +2575,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.183"
@@ -2589,8 +2589,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_one_next_down(y)
+            call set_negative_epsilon(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.184"
@@ -2603,8 +2603,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_one(y)
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.185"
@@ -2617,8 +2617,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_one_next_up(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.186"
@@ -2631,8 +2631,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.187"
@@ -2645,8 +2645,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.188"
@@ -2659,8 +2659,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.189"
@@ -2673,8 +2673,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_negative_tiny(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.190"
@@ -2687,39 +2687,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.191"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.192"
-            end if
-
-        end block
-
-
-        block
-
-            real(real32) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_tiny(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.193"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.191"
             end if
 
         end block
@@ -2729,8 +2701,36 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_epsilon(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.192"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.193"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.194"
@@ -2743,8 +2743,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_one(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.195"
@@ -2757,8 +2757,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.196"
@@ -2771,8 +2771,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_positive_huge(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.197"
@@ -2785,8 +2785,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.198"
@@ -2799,8 +2799,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.199"
@@ -2813,8 +2813,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge(y)
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.200"
@@ -2827,8 +2827,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.201"
@@ -2841,8 +2841,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_one_next_down(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.202"
@@ -2855,8 +2855,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_one(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.203"
@@ -2869,8 +2869,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_one_next_up(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.204"
@@ -2883,8 +2883,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.205"
@@ -2897,8 +2897,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon(y)
+            call set_negative_epsilon_next_up(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.206"
@@ -2911,8 +2911,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.207"
@@ -2925,8 +2925,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.208"
@@ -2939,11 +2939,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.209"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.209"
             end if
 
         end block
@@ -2953,11 +2953,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.210"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.210"
             end if
 
         end block
@@ -2967,8 +2967,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_tiny(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.211"
@@ -2981,8 +2981,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.212"
@@ -2995,8 +2995,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_one(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.213"
@@ -3009,8 +3009,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.214"
@@ -3023,8 +3023,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.215"
@@ -3037,8 +3037,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.216"
@@ -3051,11 +3051,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.217"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.217"
             end if
 
         end block
@@ -3065,8 +3065,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.218"
@@ -3079,8 +3079,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.219"
@@ -3093,8 +3093,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one_next_down(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.220"
@@ -3107,8 +3107,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.221"
@@ -3121,8 +3121,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one_next_up(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.222"
@@ -3135,8 +3135,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.223"
@@ -3149,8 +3149,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon(y)
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.224"
@@ -3163,8 +3163,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.225"
@@ -3177,8 +3177,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.226"
@@ -3191,8 +3191,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.227"
@@ -3205,8 +3205,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.228"
@@ -3219,11 +3219,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_tiny(y)
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.229"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.229"
             end if
 
         end block
@@ -3233,8 +3233,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.230"
@@ -3247,8 +3247,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_one(y)
+            call set_negative_tiny(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.231"
@@ -3261,8 +3261,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.232"
@@ -3275,8 +3275,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_tiny(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.233"
@@ -3289,8 +3289,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_tiny(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.234"
@@ -3303,8 +3303,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_tiny(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.235"
@@ -3317,8 +3317,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_tiny(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.236"
@@ -3331,8 +3331,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_tiny(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.237"
@@ -3345,8 +3345,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one_next_down(y)
+            call set_negative_tiny(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.238"
@@ -3359,8 +3359,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one(y)
+            call set_negative_tiny(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.239"
@@ -3373,8 +3373,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one_next_up(y)
+            call set_negative_tiny(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.240"
@@ -3387,11 +3387,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_tiny(x)
+            call set_negative_tiny(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.241"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.241"
             end if
 
         end block
@@ -3401,8 +3401,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_negative_tiny(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.242"
@@ -3415,8 +3415,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_tiny(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.243"
@@ -3429,8 +3429,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.244"
@@ -3443,8 +3443,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.245"
@@ -3457,8 +3457,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.246"
@@ -3471,8 +3471,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_tiny(y)
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.247"
@@ -3485,11 +3485,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.248"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.248"
             end if
 
         end block
@@ -3499,8 +3499,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_one(y)
+            call set_negative_tiny(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.249"
@@ -3513,8 +3513,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.250"
@@ -3527,8 +3527,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge(y)
+            call set_negative_tiny(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.251"
@@ -3541,8 +3541,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_tiny(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.252"
@@ -3555,8 +3555,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_tiny(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.253"
@@ -3569,8 +3569,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge(y)
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.254"
@@ -3583,8 +3583,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.255"
@@ -3597,8 +3597,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one_next_down(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.256"
@@ -3611,8 +3611,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.257"
@@ -3625,8 +3625,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one_next_up(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.258"
@@ -3639,8 +3639,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.259"
@@ -3653,8 +3653,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.260"
@@ -3667,8 +3667,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.261"
@@ -3681,8 +3681,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_tiny(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.262"
@@ -3695,8 +3695,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.263"
@@ -3709,8 +3709,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.264"
@@ -3723,11 +3723,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_tiny(y)
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.265"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.265"
             end if
 
         end block
@@ -3737,8 +3737,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.266"
@@ -3751,11 +3751,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_one(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.267"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.267"
             end if
 
         end block
@@ -3765,8 +3765,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.268"
@@ -3779,8 +3779,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge(y)
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.269"
@@ -3793,8 +3793,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.270"
@@ -3807,8 +3807,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.271"
@@ -3821,8 +3821,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.272"
@@ -3835,8 +3835,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.273"
@@ -3849,8 +3849,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one_next_down(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.274"
@@ -3863,8 +3863,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one(y)
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.275"
@@ -3877,8 +3877,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one_next_up(y)
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.276"
@@ -3891,8 +3891,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon_next_down(y)
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.277"
@@ -3905,8 +3905,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.278"
@@ -3919,8 +3919,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon_next_up(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.279"
@@ -3933,8 +3933,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_tiny(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.280"
@@ -3947,8 +3947,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.281"
@@ -3961,8 +3961,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.282"
@@ -3975,8 +3975,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_tiny(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.283"
@@ -3989,8 +3989,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_epsilon(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.284"
@@ -4003,8 +4003,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_one(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.285"
@@ -4017,11 +4017,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.286"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.286"
             end if
 
         end block
@@ -4031,8 +4031,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.287"
@@ -4045,8 +4045,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.288"
@@ -4059,11 +4059,11 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.289"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.289"
             end if
 
         end block
@@ -4073,8 +4073,8 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
-            call set_positive_huge(x)
-            call set_negative_huge(y)
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.290"
@@ -4087,11 +4087,2741 @@ program test_is_contained_by_next_out
 
             real(real32) :: x, y
 
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.291"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.292"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.293"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.294"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.295"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.296"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.297"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.298"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.299"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.300"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.301"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.302"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.303"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.304"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.305"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.306"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.307"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.308"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.309"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.310"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.311"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.312"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.313"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.314"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.315"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.316"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.317"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.318"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.319"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.320"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.321"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.322"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.323"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.324"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.325"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.326"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.327"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.328"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.329"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.330"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.331"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.332"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.333"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.334"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.335"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.336"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.337"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.338"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.339"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.340"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.341"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.342"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.343"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.344"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.345"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.346"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.347"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.348"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.349"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.350"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.351"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.352"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.353"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.354"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.355"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.356"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.357"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.358"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.359"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.360"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.361"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.362"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.363"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.364"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.365"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.366"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.367"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.368"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.369"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.370"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.371"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.372"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.373"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.374"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.375"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.376"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.377"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.378"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.379"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.380"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.381"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.382"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.383"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.384"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.385"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.386"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.387"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.388"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.389"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.390"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.391"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.392"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.393"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.394"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.395"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.396"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.397"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.398"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.399"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.400"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.401"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.402"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.403"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.404"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.405"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.406"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.407"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.408"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.409"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.410"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.411"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.412"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.413"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.414"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.415"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.416"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.417"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.418"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.419"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.420"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.421"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.422"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.423"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.424"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.425"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.426"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.427"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.428"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.429"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.430"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.431"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.432"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.433"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.434"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.435"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.436"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.437"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.438"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.439"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.440"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.441"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.442"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.443"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.444"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.445"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.446"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.447"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.448"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.449"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.450"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.451"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.452"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.453"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.454"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.455"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.456"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_one(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.457"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.458"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.459"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.460"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.461"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.462"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.463"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.464"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.465"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.466"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.467"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.468"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.469"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.470"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.471"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.472"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.473"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.474"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.475"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.476"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.477"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.478"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.479"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.480"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.481"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.482"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.483"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.484"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.485"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
             call set_positive_huge(x)
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.291"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.486"
             end if
 
         end block
@@ -4105,7 +6835,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.292"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.487"
             end if
 
         end block
@@ -4119,7 +6849,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.293"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.488"
             end if
 
         end block
@@ -4133,7 +6863,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.294"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.489"
             end if
 
         end block
@@ -4147,7 +6877,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.295"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.490"
             end if
 
         end block
@@ -4161,7 +6891,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.296"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.491"
             end if
 
         end block
@@ -4175,7 +6905,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.297"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.492"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.493"
             end if
 
         end block
@@ -4189,7 +6933,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.298"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.494"
             end if
 
         end block
@@ -4200,10 +6944,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.299"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.495"
             end if
 
         end block
@@ -4214,10 +6958,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.300"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.496"
             end if
 
         end block
@@ -4231,7 +6975,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.301"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.497"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.498"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.499"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.500"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.501"
             end if
 
         end block
@@ -4245,7 +7045,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.302"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.502"
             end if
 
         end block
@@ -4259,7 +7059,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.303"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.503"
             end if
 
         end block
@@ -4273,7 +7073,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.304"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.504"
             end if
 
         end block
@@ -4287,7 +7087,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.305"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.505"
             end if
 
         end block
@@ -4301,7 +7101,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.306"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.506"
             end if
 
         end block
@@ -4315,7 +7115,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.307"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.507"
             end if
 
         end block
@@ -4329,7 +7129,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.308"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.508"
             end if
 
         end block
@@ -4343,7 +7143,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.309"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.509"
             end if
 
         end block
@@ -4357,7 +7157,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.310"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.510"
             end if
 
         end block
@@ -4371,7 +7171,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.311"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.511"
             end if
 
         end block
@@ -4385,7 +7185,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.312"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.512"
             end if
 
         end block
@@ -4399,7 +7199,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.313"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.513"
             end if
 
         end block
@@ -4413,7 +7213,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.314"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.514"
             end if
 
         end block
@@ -4427,7 +7227,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.315"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.515"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.516"
             end if
 
         end block
@@ -4441,7 +7255,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.316"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.517"
             end if
 
         end block
@@ -4452,10 +7266,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.317"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.518"
             end if
 
         end block
@@ -4466,10 +7280,10 @@ program test_is_contained_by_next_out
             real(real32) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.318"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.519"
             end if
 
         end block
@@ -4483,7 +7297,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.319"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.520"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.521"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.522"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.523"
+            end if
+
+        end block
+
+
+        block
+
+            real(real32) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.524"
             end if
 
         end block
@@ -4497,7 +7367,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.320"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.525"
             end if
 
         end block
@@ -4511,7 +7381,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.321"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.526"
             end if
 
         end block
@@ -4525,7 +7395,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.322"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.527"
             end if
 
         end block
@@ -4539,7 +7409,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.323"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.528"
             end if
 
         end block
@@ -4553,7 +7423,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.324"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.529"
             end if
 
         end block
@@ -4572,7 +7442,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.325"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.530"
             end if
 
         end block
@@ -4584,2876 +7454,6 @@ program test_is_contained_by_next_out
 
             call set_ieee_negative_inf(x)
             call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.326"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.327"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.328"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.329"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.330"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.331"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.332"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.333"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.334"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.335"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.336"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.337"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.338"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.339"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.340"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.341"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_inf(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.342"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.343"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.344"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.345"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.346"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.347"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.348"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.349"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.350"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.351"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.352"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.353"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.354"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.355"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.356"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.357"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.358"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.359"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.360"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.361"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.362"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_huge_next_up(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.363"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.364"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.365"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.366"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.367"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.368"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.369"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.370"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.371"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.372"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.373"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.374"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.375"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.376"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.377"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_huge_next_up(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.378"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.379"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.380"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.381"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_one_next_down(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.382"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.383"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.384"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.385"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.386"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.387"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.388"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.389"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.390"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.391"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.392"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.393"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.394"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.395"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_down(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.396"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.397"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.398"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.399"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.400"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_one(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.401"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.402"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.403"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.404"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.405"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.406"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.407"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.408"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.409"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.410"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.411"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.412"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.413"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.414"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.415"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.416"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.417"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.418"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.419"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_one_next_up(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.420"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.421"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.422"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.423"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.424"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.425"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.426"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.427"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.428"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.429"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.430"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.431"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_one_next_up(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.432"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.433"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.434"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.435"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.436"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.437"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.438"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.439"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.440"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.441"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.442"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.443"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.444"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.445"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.446"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.447"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.448"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.449"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_down(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.450"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.451"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.452"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.453"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.454"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.455"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.456"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.457"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_epsilon(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.458"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.459"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.460"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.461"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.462"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.463"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.464"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.465"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.466"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.467"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.468"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.469"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.470"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.471"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.472"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.473"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.474"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.475"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.476"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.477"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.478"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.479"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.480"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.481"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.482"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.483"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.484"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.485"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_epsilon_next_up(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.486"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.487"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.488"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.489"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.490"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.491"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.492"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.493"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.494"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.495"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_negative_tiny(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.496"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.497"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.498"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.499"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.500"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.501"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.502"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.503"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_negative_tiny(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.504"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.505"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.506"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.507"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.508"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.509"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.510"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.511"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.512"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_epsilon_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.513"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_negative_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.514"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.515"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.516"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_tiny(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.517"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.518"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.519"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_huge_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.520"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_positive_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.521"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_negative_zero(x)
-            call set_ieee_positive_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.522"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_inf(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.523"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_huge(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.524"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_huge_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.525"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_one_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.526"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_one(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.527"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_one_next_up(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.528"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon_next_down(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.529"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon(y)
-
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.530"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_ieee_positive_zero(x)
-            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.531"
@@ -7466,8 +7466,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.532"
@@ -7480,11 +7480,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_down(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.533"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.533"
             end if
 
         end block
@@ -7494,11 +7494,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.534"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.534"
             end if
 
         end block
@@ -7508,8 +7508,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.535"
@@ -7522,8 +7522,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.536"
@@ -7536,8 +7536,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_one(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.537"
@@ -7550,8 +7550,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.538"
@@ -7564,8 +7564,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_positive_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.539"
@@ -7578,8 +7578,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_ieee_positive_zero(x)
-            call set_ieee_positive_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.540"
@@ -7592,8 +7592,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_inf(y)
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.541"
@@ -7606,8 +7606,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.542"
@@ -7620,8 +7620,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_huge_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.543"
@@ -7634,8 +7634,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.544"
@@ -7648,8 +7648,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.545"
@@ -7662,8 +7662,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_one_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.546"
@@ -7676,8 +7676,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon_next_down(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.547"
@@ -7690,8 +7690,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.548"
@@ -7704,8 +7704,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_epsilon_next_up(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.549"
@@ -7718,8 +7718,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_negative_tiny(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.550"
@@ -7732,8 +7732,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.551"
@@ -7746,8 +7746,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_ieee_negative_inf(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.552"
@@ -7760,25 +7760,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_tiny(y)
-
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.553"
-            end if
-
-        end block
-
-
-        block
-
-            real(real64) :: x, y
-
-            call set_positive_tiny(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.554"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.553"
             end if
 
         end block
@@ -7788,8 +7774,22 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_one(y)
+            call set_negative_huge(x)
+            call set_negative_huge(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.554"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_huge(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.555"
@@ -7802,8 +7802,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.556"
@@ -7816,8 +7816,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_positive_huge(y)
+            call set_negative_huge(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.557"
@@ -7830,8 +7830,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_tiny(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.558"
@@ -7844,8 +7844,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.559"
@@ -7858,8 +7858,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge(y)
+            call set_negative_huge(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.560"
@@ -7872,8 +7872,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.561"
@@ -7886,8 +7886,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one_next_down(y)
+            call set_negative_huge(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.562"
@@ -7900,8 +7900,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one(y)
+            call set_negative_huge(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.563"
@@ -7914,8 +7914,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_one_next_up(y)
+            call set_negative_huge(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.564"
@@ -7928,8 +7928,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_huge(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.565"
@@ -7942,8 +7942,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.566"
@@ -7956,8 +7956,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_huge(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.567"
@@ -7970,8 +7970,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_negative_tiny(y)
+            call set_negative_huge(x)
+            call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.568"
@@ -7984,8 +7984,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.569"
@@ -7998,8 +7998,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.570"
@@ -8012,8 +8012,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_tiny(y)
+            call set_negative_huge(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.571"
@@ -8026,11 +8026,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge(x)
+            call set_positive_one(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.572"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.572"
             end if
 
         end block
@@ -8040,8 +8040,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_one(y)
+            call set_negative_huge(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.573"
@@ -8054,8 +8054,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.574"
@@ -8068,8 +8068,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_positive_huge(y)
+            call set_negative_huge(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.575"
@@ -8082,8 +8082,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_epsilon(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.576"
@@ -8096,8 +8096,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.577"
@@ -8110,11 +8110,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_huge_next_up(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.578"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.578"
             end if
 
         end block
@@ -8124,8 +8124,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.579"
@@ -8138,8 +8138,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.580"
@@ -8152,8 +8152,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.581"
@@ -8166,8 +8166,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_one_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.582"
@@ -8180,8 +8180,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.583"
@@ -8194,8 +8194,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.584"
@@ -8208,8 +8208,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.585"
@@ -8222,7 +8222,7 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
+            call set_negative_huge_next_up(x)
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
@@ -8236,8 +8236,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.587"
@@ -8250,8 +8250,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.588"
@@ -8264,7 +8264,7 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
+            call set_negative_huge_next_up(x)
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
@@ -8278,8 +8278,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_epsilon(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.590"
@@ -8292,11 +8292,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_one(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_zero(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.591"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.591"
             end if
 
         end block
@@ -8306,8 +8306,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.592"
@@ -8320,8 +8320,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_positive_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.593"
@@ -8334,8 +8334,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_one(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.594"
@@ -8348,8 +8348,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.595"
@@ -8362,8 +8362,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.596"
@@ -8376,8 +8376,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_huge_next_up(y)
+            call set_negative_huge_next_up(x)
+            call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.597"
@@ -8390,8 +8390,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one_next_down(y)
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.598"
@@ -8404,8 +8404,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one(y)
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.599"
@@ -8418,8 +8418,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_one_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.600"
@@ -8432,8 +8432,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.601"
@@ -8446,11 +8446,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_down(y)
 
-            if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.602"
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.602"
             end if
 
         end block
@@ -8460,8 +8460,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_epsilon_next_up(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.603"
@@ -8474,8 +8474,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_negative_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.604"
@@ -8488,8 +8488,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.605"
@@ -8502,8 +8502,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.606"
@@ -8516,8 +8516,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_tiny(y)
+            call set_negative_one_next_down(x)
+            call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.607"
@@ -8530,8 +8530,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_epsilon(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.608"
@@ -8544,8 +8544,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_one(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.609"
@@ -8558,11 +8558,11 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge_next_down(y)
+            call set_negative_one_next_down(x)
+            call set_negative_tiny_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.610"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.610"
             end if
 
         end block
@@ -8572,8 +8572,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_positive_huge(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.611"
@@ -8586,8 +8586,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge_next_down(x)
-            call set_ieee_positive_inf(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.612"
@@ -8600,8 +8600,8 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
-            call set_positive_huge(x)
-            call set_ieee_negative_inf(y)
+            call set_negative_one_next_down(x)
+            call set_positive_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
                 error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.613"
@@ -8614,11 +8614,5611 @@ program test_is_contained_by_next_out
 
             real(real64) :: x, y
 
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.614"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.615"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.616"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.617"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.618"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.619"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.620"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.621"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.622"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.623"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.624"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.625"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.626"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.627"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.628"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.629"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.630"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.631"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.632"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.633"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.634"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.635"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.636"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.637"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.638"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.639"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.640"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.641"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.642"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.643"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.644"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.645"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.646"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.647"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.648"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.649"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.650"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.651"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.652"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.653"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.654"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.655"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.656"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.657"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.658"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.659"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.660"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.661"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.662"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.663"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.664"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.665"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.666"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.667"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.668"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.669"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.670"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.671"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.672"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.673"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.674"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.675"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.676"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.677"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.678"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.679"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.680"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.681"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.682"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.683"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.684"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.685"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.686"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.687"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.688"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.689"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.690"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.691"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.692"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.693"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.694"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.695"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.696"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.697"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.698"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.699"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.700"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.701"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.702"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.703"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.704"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.705"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.706"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.707"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.708"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.709"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.710"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.711"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.712"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.713"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.714"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.715"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.716"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.717"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.718"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.719"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.720"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.721"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.722"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.723"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.724"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.725"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.726"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.727"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.728"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.729"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.730"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.731"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.732"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.733"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.734"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.735"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.736"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.737"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.738"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.739"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.740"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.741"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.742"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.743"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.744"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.745"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.746"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.747"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.748"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.749"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.750"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.751"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.752"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.753"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.754"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.755"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.756"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.757"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.758"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.759"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.760"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.761"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.762"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.763"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.764"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.765"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.766"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.767"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.768"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.769"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.770"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.771"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.772"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.773"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.774"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.775"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.776"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.777"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.778"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.779"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.780"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.781"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.782"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.783"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.784"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.785"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.786"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.787"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.788"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.789"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.790"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.791"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.792"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.793"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.794"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.795"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.796"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.797"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.798"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.799"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.800"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.801"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.802"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.803"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.804"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.805"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.806"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.807"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.808"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.809"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.810"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.811"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.812"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.813"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.814"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.815"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.816"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.817"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.818"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.819"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.820"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.821"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.822"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.823"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.824"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.825"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.826"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.827"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.828"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.829"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.830"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.831"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.832"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.833"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.834"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.835"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.836"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.837"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.838"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.839"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.840"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.841"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.842"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.843"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.844"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.845"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.846"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.847"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.848"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.849"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.850"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.851"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.852"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.853"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.854"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.855"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.856"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.857"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.858"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.859"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.860"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.861"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.862"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.863"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.864"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.865"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.866"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.867"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.868"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.869"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.870"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.871"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.872"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.873"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.874"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.875"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.876"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.877"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.878"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.879"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.880"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.881"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.882"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.883"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.884"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.885"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.886"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.887"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.888"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.889"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.890"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.891"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.892"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.893"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.894"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.895"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.896"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.897"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.898"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.899"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.900"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.901"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.902"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.903"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.904"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.905"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.906"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.907"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.908"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.909"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.910"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.911"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.912"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.913"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.914"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.915"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.916"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.917"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.918"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.919"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.920"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.921"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.922"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.923"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.924"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.925"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.926"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.927"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.928"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.929"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.930"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.931"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.932"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.933"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.934"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.935"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.936"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.937"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.938"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.939"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.940"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.941"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.942"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.943"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.944"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.945"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.946"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.947"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.948"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.949"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.950"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.951"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.952"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.953"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.954"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.955"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.956"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.957"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.958"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.959"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.960"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.961"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_epsilon(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.962"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.963"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.964"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.965"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.966"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.967"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.968"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.969"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.970"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.971"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.972"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.973"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.974"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.975"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.976"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.977"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.978"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.979"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.980"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.981"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.982"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.983"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.984"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.985"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_one(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.986"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.987"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.988"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.989"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.990"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.991"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.992"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.993"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.994"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.995"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.996"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.997"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.998"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.999"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1000"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1001"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1002"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1003"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1004"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1005"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1006"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1007"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1008"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1009"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1010"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1011"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1012"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1013"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
             call set_positive_huge(x)
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.614"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1014"
             end if
 
         end block
@@ -8632,7 +14232,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.615"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1015"
             end if
 
         end block
@@ -8646,7 +14246,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.616"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1016"
             end if
 
         end block
@@ -8660,7 +14260,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.617"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1017"
             end if
 
         end block
@@ -8674,7 +14274,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.618"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1018"
             end if
 
         end block
@@ -8688,7 +14288,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.619"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1019"
             end if
 
         end block
@@ -8702,7 +14302,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.620"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1020"
             end if
 
         end block
@@ -8716,7 +14316,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.621"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1021"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1022"
             end if
 
         end block
@@ -8730,7 +14344,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.622"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1023"
             end if
 
         end block
@@ -8741,10 +14355,10 @@ program test_is_contained_by_next_out
             real(real64) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.623"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1024"
             end if
 
         end block
@@ -8755,10 +14369,10 @@ program test_is_contained_by_next_out
             real(real64) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.624"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1025"
             end if
 
         end block
@@ -8772,7 +14386,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.625"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1026"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1027"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1028"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1029"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1030"
             end if
 
         end block
@@ -8786,7 +14456,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.626"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1031"
             end if
 
         end block
@@ -8800,7 +14470,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.627"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1032"
             end if
 
         end block
@@ -8814,7 +14484,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.628"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1033"
             end if
 
         end block
@@ -8828,7 +14498,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.629"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1034"
             end if
 
         end block
@@ -8842,7 +14512,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.630"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1035"
             end if
 
         end block
@@ -8856,7 +14526,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.631"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1036"
             end if
 
         end block
@@ -8870,7 +14540,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.632"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1037"
             end if
 
         end block
@@ -8884,7 +14554,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.633"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1038"
             end if
 
         end block
@@ -8898,7 +14568,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.634"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1039"
             end if
 
         end block
@@ -8912,7 +14582,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.635"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1040"
             end if
 
         end block
@@ -8926,7 +14596,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.636"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1041"
             end if
 
         end block
@@ -8940,7 +14610,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.637"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1042"
             end if
 
         end block
@@ -8954,7 +14624,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.638"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1043"
             end if
 
         end block
@@ -8968,7 +14638,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.639"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1044"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1045"
             end if
 
         end block
@@ -8982,7 +14666,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.640"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1046"
             end if
 
         end block
@@ -8993,10 +14677,10 @@ program test_is_contained_by_next_out
             real(real64) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.641"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1047"
             end if
 
         end block
@@ -9007,10 +14691,10 @@ program test_is_contained_by_next_out
             real(real64) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.642"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1048"
             end if
 
         end block
@@ -9024,7 +14708,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.643"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1049"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1050"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1051"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1052"
+            end if
+
+        end block
+
+
+        block
+
+            real(real64) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1053"
             end if
 
         end block
@@ -9038,7 +14778,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.644"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1054"
             end if
 
         end block
@@ -9052,7 +14792,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.645"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1055"
             end if
 
         end block
@@ -9066,7 +14806,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.646"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1056"
             end if
 
         end block
@@ -9080,7 +14820,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.647"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1057"
             end if
 
         end block
@@ -9094,7 +14834,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.648"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1058"
             end if
 
         end block
@@ -9113,7 +14853,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.649"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1059"
             end if
 
         end block
@@ -9127,7 +14867,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.650"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1060"
             end if
 
         end block
@@ -9141,7 +14881,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.651"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1061"
             end if
 
         end block
@@ -9155,7 +14895,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.652"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1062"
             end if
 
         end block
@@ -9169,7 +14909,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.653"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1063"
             end if
 
         end block
@@ -9183,7 +14923,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.654"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1064"
             end if
 
         end block
@@ -9197,7 +14937,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.655"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1065"
             end if
 
         end block
@@ -9211,7 +14951,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.656"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1066"
             end if
 
         end block
@@ -9225,7 +14965,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.657"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1067"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1068"
             end if
 
         end block
@@ -9239,7 +14993,63 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.658"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1069"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_inf(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1070"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1071"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1072"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_inf(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1073"
             end if
 
         end block
@@ -9253,7 +15063,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.659"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1074"
             end if
 
         end block
@@ -9267,7 +15077,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_zero(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.660"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1075"
             end if
 
         end block
@@ -9281,7 +15091,7 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.661"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1076"
             end if
 
         end block
@@ -9295,7 +15105,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.662"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1077"
             end if
 
         end block
@@ -9309,7 +15119,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.663"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1078"
             end if
 
         end block
@@ -9323,7 +15133,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.664"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1079"
             end if
 
         end block
@@ -9337,7 +15147,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.665"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1080"
             end if
 
         end block
@@ -9351,7 +15161,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.666"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1081"
             end if
 
         end block
@@ -9365,7 +15175,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.667"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1082"
             end if
 
         end block
@@ -9379,7 +15189,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.668"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1083"
             end if
 
         end block
@@ -9393,7 +15203,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.669"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1084"
             end if
 
         end block
@@ -9407,7 +15217,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.670"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1085"
             end if
 
         end block
@@ -9421,7 +15231,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.671"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1086"
             end if
 
         end block
@@ -9435,7 +15245,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.672"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1087"
             end if
 
         end block
@@ -9449,7 +15259,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.673"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1088"
             end if
 
         end block
@@ -9463,7 +15273,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.674"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1089"
             end if
 
         end block
@@ -9477,7 +15287,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.675"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1090"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1091"
             end if
 
         end block
@@ -9491,7 +15315,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.676"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1092"
             end if
 
         end block
@@ -9502,10 +15326,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.677"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1093"
             end if
 
         end block
@@ -9516,10 +15340,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.678"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1094"
             end if
 
         end block
@@ -9533,7 +15357,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.679"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1095"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1096"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1097"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1098"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1099"
             end if
 
         end block
@@ -9547,7 +15427,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.680"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1100"
             end if
 
         end block
@@ -9561,7 +15441,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.681"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1101"
             end if
 
         end block
@@ -9575,7 +15455,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.682"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1102"
             end if
 
         end block
@@ -9589,7 +15469,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.683"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1103"
             end if
 
         end block
@@ -9603,7 +15483,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.684"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1104"
             end if
 
         end block
@@ -9617,7 +15497,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.685"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1105"
             end if
 
         end block
@@ -9631,7 +15511,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.686"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1106"
             end if
 
         end block
@@ -9645,7 +15525,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.687"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1107"
             end if
 
         end block
@@ -9659,7 +15539,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.688"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1108"
             end if
 
         end block
@@ -9673,7 +15553,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.689"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1109"
             end if
 
         end block
@@ -9687,7 +15567,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.690"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1110"
             end if
 
         end block
@@ -9701,7 +15581,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.691"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1111"
             end if
 
         end block
@@ -9715,7 +15595,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.692"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1112"
             end if
 
         end block
@@ -9729,7 +15609,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.693"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1113"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1114"
             end if
 
         end block
@@ -9743,7 +15637,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.694"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1115"
             end if
 
         end block
@@ -9754,10 +15648,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.695"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1116"
             end if
 
         end block
@@ -9768,10 +15662,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_huge_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.696"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1117"
             end if
 
         end block
@@ -9785,7 +15679,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.697"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1118"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1119"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1120"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1121"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_huge_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1122"
             end if
 
         end block
@@ -9799,7 +15749,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.698"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1123"
             end if
 
         end block
@@ -9813,7 +15763,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.699"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1124"
             end if
 
         end block
@@ -9827,7 +15777,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.700"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1125"
             end if
 
         end block
@@ -9841,7 +15791,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.701"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1126"
             end if
 
         end block
@@ -9855,7 +15805,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.702"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1127"
             end if
 
         end block
@@ -9869,7 +15819,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.703"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1128"
             end if
 
         end block
@@ -9883,7 +15833,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.704"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1129"
             end if
 
         end block
@@ -9897,7 +15847,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.705"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1130"
             end if
 
         end block
@@ -9911,7 +15861,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.706"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1131"
             end if
 
         end block
@@ -9925,7 +15875,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.707"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1132"
             end if
 
         end block
@@ -9939,7 +15889,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.708"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1133"
             end if
 
         end block
@@ -9953,7 +15903,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.709"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1134"
             end if
 
         end block
@@ -9967,7 +15917,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.710"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1135"
             end if
 
         end block
@@ -9981,7 +15931,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.711"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1136"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1137"
             end if
 
         end block
@@ -9995,7 +15959,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.712"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1138"
             end if
 
         end block
@@ -10006,10 +15970,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.713"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1139"
             end if
 
         end block
@@ -10020,10 +15984,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.714"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1140"
             end if
 
         end block
@@ -10037,7 +16001,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.715"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1141"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1142"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1143"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1144"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1145"
             end if
 
         end block
@@ -10051,7 +16071,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.716"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1146"
             end if
 
         end block
@@ -10065,7 +16085,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.717"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1147"
             end if
 
         end block
@@ -10079,7 +16099,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.718"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1148"
             end if
 
         end block
@@ -10093,7 +16113,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.719"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1149"
             end if
 
         end block
@@ -10107,7 +16127,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.720"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1150"
             end if
 
         end block
@@ -10121,7 +16141,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.721"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1151"
             end if
 
         end block
@@ -10135,7 +16155,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.722"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1152"
             end if
 
         end block
@@ -10149,7 +16169,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.723"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1153"
             end if
 
         end block
@@ -10163,7 +16183,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.724"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1154"
             end if
 
         end block
@@ -10177,7 +16197,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.725"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1155"
             end if
 
         end block
@@ -10191,7 +16211,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.726"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1156"
             end if
 
         end block
@@ -10205,7 +16225,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.727"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1157"
             end if
 
         end block
@@ -10219,7 +16239,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.728"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1158"
             end if
 
         end block
@@ -10233,7 +16253,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.729"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1159"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1160"
             end if
 
         end block
@@ -10247,7 +16281,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.730"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1161"
             end if
 
         end block
@@ -10258,10 +16292,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.731"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1162"
             end if
 
         end block
@@ -10272,10 +16306,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.732"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1163"
             end if
 
         end block
@@ -10289,7 +16323,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.733"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1164"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1165"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1166"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1167"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1168"
             end if
 
         end block
@@ -10303,7 +16393,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.734"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1169"
             end if
 
         end block
@@ -10317,7 +16407,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.735"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1170"
             end if
 
         end block
@@ -10331,7 +16421,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.736"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1171"
             end if
 
         end block
@@ -10345,7 +16435,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.737"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1172"
             end if
 
         end block
@@ -10359,7 +16449,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.738"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1173"
             end if
 
         end block
@@ -10373,7 +16463,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.739"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1174"
             end if
 
         end block
@@ -10387,7 +16477,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.740"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1175"
             end if
 
         end block
@@ -10401,7 +16491,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.741"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1176"
             end if
 
         end block
@@ -10415,7 +16505,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.742"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1177"
             end if
 
         end block
@@ -10429,7 +16519,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.743"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1178"
             end if
 
         end block
@@ -10443,7 +16533,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.744"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1179"
             end if
 
         end block
@@ -10457,7 +16547,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.745"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1180"
             end if
 
         end block
@@ -10471,7 +16561,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.746"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1181"
             end if
 
         end block
@@ -10485,7 +16575,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.747"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1182"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1183"
             end if
 
         end block
@@ -10499,7 +16603,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.748"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1184"
             end if
 
         end block
@@ -10510,10 +16614,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.749"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1185"
             end if
 
         end block
@@ -10524,10 +16628,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_one_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.750"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1186"
             end if
 
         end block
@@ -10541,7 +16645,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.751"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1187"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1188"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1189"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1190"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_one_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1191"
             end if
 
         end block
@@ -10555,7 +16715,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.752"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1192"
             end if
 
         end block
@@ -10569,7 +16729,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.753"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1193"
             end if
 
         end block
@@ -10583,7 +16743,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.754"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1194"
             end if
 
         end block
@@ -10597,7 +16757,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.755"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1195"
             end if
 
         end block
@@ -10611,7 +16771,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.756"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1196"
             end if
 
         end block
@@ -10625,7 +16785,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.757"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1197"
             end if
 
         end block
@@ -10639,7 +16799,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.758"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1198"
             end if
 
         end block
@@ -10653,7 +16813,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.759"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1199"
             end if
 
         end block
@@ -10667,7 +16827,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.760"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1200"
             end if
 
         end block
@@ -10681,7 +16841,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.761"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1201"
             end if
 
         end block
@@ -10695,7 +16855,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.762"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1202"
             end if
 
         end block
@@ -10709,7 +16869,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.763"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1203"
             end if
 
         end block
@@ -10723,7 +16883,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.764"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1204"
             end if
 
         end block
@@ -10737,7 +16897,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.765"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1205"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1206"
             end if
 
         end block
@@ -10751,7 +16925,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.766"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1207"
             end if
 
         end block
@@ -10762,10 +16936,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.767"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1208"
             end if
 
         end block
@@ -10776,10 +16950,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.768"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1209"
             end if
 
         end block
@@ -10793,7 +16967,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.769"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1210"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1211"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1212"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1213"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1214"
             end if
 
         end block
@@ -10807,7 +17037,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.770"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1215"
             end if
 
         end block
@@ -10821,7 +17051,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.771"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1216"
             end if
 
         end block
@@ -10835,7 +17065,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.772"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1217"
             end if
 
         end block
@@ -10849,7 +17079,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.773"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1218"
             end if
 
         end block
@@ -10863,7 +17093,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.774"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1219"
             end if
 
         end block
@@ -10877,7 +17107,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.775"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1220"
             end if
 
         end block
@@ -10891,7 +17121,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.776"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1221"
             end if
 
         end block
@@ -10905,7 +17135,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.777"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1222"
             end if
 
         end block
@@ -10919,7 +17149,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.778"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1223"
             end if
 
         end block
@@ -10933,7 +17163,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.779"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1224"
             end if
 
         end block
@@ -10947,7 +17177,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.780"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1225"
             end if
 
         end block
@@ -10961,7 +17191,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.781"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1226"
             end if
 
         end block
@@ -10975,7 +17205,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.782"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1227"
             end if
 
         end block
@@ -10989,7 +17219,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.783"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1228"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1229"
             end if
 
         end block
@@ -11003,7 +17247,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.784"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1230"
             end if
 
         end block
@@ -11014,10 +17258,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.785"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1231"
             end if
 
         end block
@@ -11028,10 +17272,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.786"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1232"
             end if
 
         end block
@@ -11045,7 +17289,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.787"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1233"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1234"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1235"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1236"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1237"
             end if
 
         end block
@@ -11059,7 +17359,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.788"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1238"
             end if
 
         end block
@@ -11073,7 +17373,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.789"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1239"
             end if
 
         end block
@@ -11087,7 +17387,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.790"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1240"
             end if
 
         end block
@@ -11101,7 +17401,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.791"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1241"
             end if
 
         end block
@@ -11115,7 +17415,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.792"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1242"
             end if
 
         end block
@@ -11129,7 +17429,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.793"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1243"
             end if
 
         end block
@@ -11143,7 +17443,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.794"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1244"
             end if
 
         end block
@@ -11157,7 +17457,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.795"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1245"
             end if
 
         end block
@@ -11171,7 +17471,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.796"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1246"
             end if
 
         end block
@@ -11185,7 +17485,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.797"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1247"
             end if
 
         end block
@@ -11199,7 +17499,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.798"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1248"
             end if
 
         end block
@@ -11213,7 +17513,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.799"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1249"
             end if
 
         end block
@@ -11227,7 +17527,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.800"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1250"
             end if
 
         end block
@@ -11241,7 +17541,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.801"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1251"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1252"
             end if
 
         end block
@@ -11255,7 +17569,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.802"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1253"
             end if
 
         end block
@@ -11266,10 +17580,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon_next_up(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.803"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1254"
             end if
 
         end block
@@ -11280,10 +17594,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_epsilon_next_up(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.804"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1255"
             end if
 
         end block
@@ -11297,7 +17611,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.805"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1256"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1257"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1258"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1259"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_epsilon_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1260"
             end if
 
         end block
@@ -11311,7 +17681,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.806"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1261"
             end if
 
         end block
@@ -11325,7 +17695,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.807"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1262"
             end if
 
         end block
@@ -11339,7 +17709,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.808"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1263"
             end if
 
         end block
@@ -11353,7 +17723,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.809"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1264"
             end if
 
         end block
@@ -11367,7 +17737,329 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.810"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1265"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1266"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1267"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1268"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1269"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1270"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1271"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1272"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1273"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1274"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1275"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1276"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1277"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1278"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1279"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1280"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1281"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1282"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1283"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1284"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1285"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1286"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1287"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1288"
             end if
 
         end block
@@ -11381,7 +18073,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.811"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1289"
             end if
 
         end block
@@ -11395,7 +18087,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.812"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1290"
             end if
 
         end block
@@ -11409,7 +18101,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.813"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1291"
             end if
 
         end block
@@ -11423,7 +18115,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.814"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1292"
             end if
 
         end block
@@ -11437,7 +18129,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.815"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1293"
             end if
 
         end block
@@ -11451,7 +18143,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.816"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1294"
             end if
 
         end block
@@ -11465,7 +18157,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.817"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1295"
             end if
 
         end block
@@ -11479,7 +18171,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.818"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1296"
             end if
 
         end block
@@ -11493,7 +18185,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.819"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1297"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1298"
             end if
 
         end block
@@ -11507,7 +18213,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.820"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1299"
             end if
 
         end block
@@ -11518,10 +18224,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.821"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1300"
             end if
 
         end block
@@ -11532,10 +18238,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_negative_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.822"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1301"
             end if
 
         end block
@@ -11549,7 +18255,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.823"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1302"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1303"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1304"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1305"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1306"
             end if
 
         end block
@@ -11563,7 +18325,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.824"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1307"
             end if
 
         end block
@@ -11577,7 +18339,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.825"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1308"
             end if
 
         end block
@@ -11591,7 +18353,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.826"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1309"
             end if
 
         end block
@@ -11605,7 +18367,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.827"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1310"
             end if
 
         end block
@@ -11619,7 +18381,1295 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.828"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1311"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1312"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1313"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1314"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1315"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1316"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1317"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1318"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1319"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1320"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1321"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1322"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1323"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1324"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1325"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1326"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1327"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1328"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1329"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1330"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1331"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1332"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1333"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_negative_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1334"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1335"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1336"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1337"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1338"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1339"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1340"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1341"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1342"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1343"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1344"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1345"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1346"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1347"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1348"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1349"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1350"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1351"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1352"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1353"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1354"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1355"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1356"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_down(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1357"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1358"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1359"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1360"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1361"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1362"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1363"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1364"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1365"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1366"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1367"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1368"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1369"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1370"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1371"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1372"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1373"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1374"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1375"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1376"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1377"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1378"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1379"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1380"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1381"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1382"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_huge_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1383"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1384"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1385"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_one_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1386"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1387"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1388"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_epsilon_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1389"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1390"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1391"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_negative_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1392"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1393"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1394"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1395"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1396"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1397"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1398"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_epsilon(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1399"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_one(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1400"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1401"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_positive_huge(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1402"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny_next_up(x)
+            call set_ieee_positive_inf(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1403"
             end if
 
         end block
@@ -11633,7 +19683,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.829"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1404"
             end if
 
         end block
@@ -11647,7 +19697,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.830"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1405"
             end if
 
         end block
@@ -11661,7 +19711,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.831"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1406"
             end if
 
         end block
@@ -11675,7 +19725,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.832"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1407"
             end if
 
         end block
@@ -11689,7 +19739,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.833"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1408"
             end if
 
         end block
@@ -11703,7 +19753,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.834"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1409"
             end if
 
         end block
@@ -11717,7 +19767,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.835"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1410"
             end if
 
         end block
@@ -11731,7 +19781,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.836"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1411"
             end if
 
         end block
@@ -11745,7 +19795,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.837"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1412"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1413"
             end if
 
         end block
@@ -11759,7 +19823,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.838"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1414"
             end if
 
         end block
@@ -11770,10 +19834,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_negative_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.839"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1415"
             end if
 
         end block
@@ -11784,10 +19848,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_negative_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.840"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1416"
             end if
 
         end block
@@ -11801,7 +19865,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.841"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1417"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1418"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1419"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1420"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_negative_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1421"
             end if
 
         end block
@@ -11815,7 +19935,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.842"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1422"
             end if
 
         end block
@@ -11829,7 +19949,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.843"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1423"
             end if
 
         end block
@@ -11843,7 +19963,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.844"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1424"
             end if
 
         end block
@@ -11857,7 +19977,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.845"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1425"
             end if
 
         end block
@@ -11871,7 +19991,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.846"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1426"
             end if
 
         end block
@@ -11885,7 +20005,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.847"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1427"
             end if
 
         end block
@@ -11899,7 +20019,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.848"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1428"
             end if
 
         end block
@@ -11913,7 +20033,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.849"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1429"
             end if
 
         end block
@@ -11927,7 +20047,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.850"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1430"
             end if
 
         end block
@@ -11941,7 +20061,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.851"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1431"
             end if
 
         end block
@@ -11955,7 +20075,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.852"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1432"
             end if
 
         end block
@@ -11969,7 +20089,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.853"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1433"
             end if
 
         end block
@@ -11983,7 +20103,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.854"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1434"
             end if
 
         end block
@@ -11997,7 +20117,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.855"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1435"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1436"
             end if
 
         end block
@@ -12011,7 +20145,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.856"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1437"
             end if
 
         end block
@@ -12022,10 +20156,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_positive_zero(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.857"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1438"
             end if
 
         end block
@@ -12036,10 +20170,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_positive_zero(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
-            if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.858"
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1439"
             end if
 
         end block
@@ -12053,7 +20187,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.859"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1440"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1441"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_negative_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1442"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_ieee_positive_zero(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1443"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_zero(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1444"
             end if
 
         end block
@@ -12067,7 +20257,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.860"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1445"
             end if
 
         end block
@@ -12081,7 +20271,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.861"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1446"
             end if
 
         end block
@@ -12095,7 +20285,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.862"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1447"
             end if
 
         end block
@@ -12109,7 +20299,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.863"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1448"
             end if
 
         end block
@@ -12123,7 +20313,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.864"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1449"
             end if
 
         end block
@@ -12137,7 +20327,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.865"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1450"
             end if
 
         end block
@@ -12151,7 +20341,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.866"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1451"
             end if
 
         end block
@@ -12165,7 +20355,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.867"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1452"
             end if
 
         end block
@@ -12179,7 +20369,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.868"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1453"
             end if
 
         end block
@@ -12193,7 +20383,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.869"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1454"
             end if
 
         end block
@@ -12207,7 +20397,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.870"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1455"
             end if
 
         end block
@@ -12221,7 +20411,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.871"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1456"
             end if
 
         end block
@@ -12235,7 +20425,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.872"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1457"
             end if
 
         end block
@@ -12249,7 +20439,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.873"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1458"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1459"
             end if
 
         end block
@@ -12263,7 +20467,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.874"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1460"
             end if
 
         end block
@@ -12274,10 +20478,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_tiny(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.875"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1461"
             end if
 
         end block
@@ -12288,10 +20492,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_tiny(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.876"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1462"
             end if
 
         end block
@@ -12305,7 +20509,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.877"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1463"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1464"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1465"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1466"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_tiny(x)
+            call set_positive_tiny(y)
+
+            if ( .not. is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1467"
             end if
 
         end block
@@ -12319,7 +20579,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.878"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1468"
             end if
 
         end block
@@ -12333,7 +20593,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.879"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1469"
             end if
 
         end block
@@ -12347,7 +20607,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.880"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1470"
             end if
 
         end block
@@ -12361,7 +20621,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.881"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1471"
             end if
 
         end block
@@ -12375,7 +20635,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.882"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1472"
             end if
 
         end block
@@ -12389,7 +20649,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.883"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1473"
             end if
 
         end block
@@ -12403,7 +20663,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.884"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1474"
             end if
 
         end block
@@ -12417,7 +20677,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.885"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1475"
             end if
 
         end block
@@ -12431,7 +20691,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.886"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1476"
             end if
 
         end block
@@ -12445,7 +20705,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.887"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1477"
             end if
 
         end block
@@ -12459,7 +20719,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.888"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1478"
             end if
 
         end block
@@ -12473,7 +20733,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.889"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1479"
             end if
 
         end block
@@ -12487,7 +20747,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.890"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1480"
             end if
 
         end block
@@ -12501,7 +20761,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.891"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1481"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1482"
             end if
 
         end block
@@ -12515,7 +20789,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.892"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1483"
             end if
 
         end block
@@ -12526,10 +20800,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_epsilon(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.893"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1484"
             end if
 
         end block
@@ -12540,10 +20814,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_epsilon(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.894"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1485"
             end if
 
         end block
@@ -12557,7 +20831,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.895"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1486"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1487"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1488"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1489"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_epsilon(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1490"
             end if
 
         end block
@@ -12571,7 +20901,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.896"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1491"
             end if
 
         end block
@@ -12585,7 +20915,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.897"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1492"
             end if
 
         end block
@@ -12599,7 +20929,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.898"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1493"
             end if
 
         end block
@@ -12613,7 +20943,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.899"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1494"
             end if
 
         end block
@@ -12627,7 +20957,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.900"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1495"
             end if
 
         end block
@@ -12641,7 +20971,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.901"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1496"
             end if
 
         end block
@@ -12655,7 +20985,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.902"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1497"
             end if
 
         end block
@@ -12669,7 +20999,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.903"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1498"
             end if
 
         end block
@@ -12683,7 +21013,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.904"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1499"
             end if
 
         end block
@@ -12697,7 +21027,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.905"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1500"
             end if
 
         end block
@@ -12711,7 +21041,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.906"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1501"
             end if
 
         end block
@@ -12725,7 +21055,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.907"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1502"
             end if
 
         end block
@@ -12739,7 +21069,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.908"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1503"
             end if
 
         end block
@@ -12753,7 +21083,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.909"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1504"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1505"
             end if
 
         end block
@@ -12767,7 +21111,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.910"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1506"
             end if
 
         end block
@@ -12778,10 +21122,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_one(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.911"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1507"
             end if
 
         end block
@@ -12792,10 +21136,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_one(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.912"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1508"
             end if
 
         end block
@@ -12809,7 +21153,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.913"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1509"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1510"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1511"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1512"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_one(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1513"
             end if
 
         end block
@@ -12823,7 +21223,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.914"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1514"
             end if
 
         end block
@@ -12837,7 +21237,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.915"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1515"
             end if
 
         end block
@@ -12851,7 +21251,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.916"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1516"
             end if
 
         end block
@@ -12865,7 +21265,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.917"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1517"
             end if
 
         end block
@@ -12879,7 +21279,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.918"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1518"
             end if
 
         end block
@@ -12893,7 +21293,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.919"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1519"
             end if
 
         end block
@@ -12907,7 +21307,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.920"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1520"
             end if
 
         end block
@@ -12921,7 +21321,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.921"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1521"
             end if
 
         end block
@@ -12935,7 +21335,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.922"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1522"
             end if
 
         end block
@@ -12949,7 +21349,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.923"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1523"
             end if
 
         end block
@@ -12963,7 +21363,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.924"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1524"
             end if
 
         end block
@@ -12977,7 +21377,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.925"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1525"
             end if
 
         end block
@@ -12991,7 +21391,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.926"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1526"
             end if
 
         end block
@@ -13005,7 +21405,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.927"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1527"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1528"
             end if
 
         end block
@@ -13019,7 +21433,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.928"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1529"
             end if
 
         end block
@@ -13030,10 +21444,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_huge_next_down(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.929"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1530"
             end if
 
         end block
@@ -13044,10 +21458,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_huge_next_down(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.930"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1531"
             end if
 
         end block
@@ -13061,7 +21475,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.931"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1532"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1533"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1534"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1535"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge_next_down(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1536"
             end if
 
         end block
@@ -13075,7 +21545,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.932"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1537"
             end if
 
         end block
@@ -13089,7 +21559,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.933"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1538"
             end if
 
         end block
@@ -13103,7 +21573,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.934"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1539"
             end if
 
         end block
@@ -13117,7 +21587,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.935"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1540"
             end if
 
         end block
@@ -13131,7 +21601,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.936"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1541"
             end if
 
         end block
@@ -13145,7 +21615,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.937"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1542"
             end if
 
         end block
@@ -13159,7 +21629,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.938"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1543"
             end if
 
         end block
@@ -13173,7 +21643,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.939"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1544"
             end if
 
         end block
@@ -13187,7 +21657,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.940"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1545"
             end if
 
         end block
@@ -13201,7 +21671,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.941"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1546"
             end if
 
         end block
@@ -13215,7 +21685,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.942"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1547"
             end if
 
         end block
@@ -13229,7 +21699,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.943"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1548"
             end if
 
         end block
@@ -13243,7 +21713,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.944"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1549"
             end if
 
         end block
@@ -13257,7 +21727,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.945"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1550"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1551"
             end if
 
         end block
@@ -13271,7 +21755,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.946"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1552"
             end if
 
         end block
@@ -13282,10 +21766,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.947"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1553"
             end if
 
         end block
@@ -13296,10 +21780,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_positive_huge(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.948"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1554"
             end if
 
         end block
@@ -13313,7 +21797,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.949"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1555"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1556"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1557"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1558"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_positive_huge(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1559"
             end if
 
         end block
@@ -13327,7 +21867,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.950"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1560"
             end if
 
         end block
@@ -13341,7 +21881,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.951"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1561"
             end if
 
         end block
@@ -13355,7 +21895,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.952"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1562"
             end if
 
         end block
@@ -13369,7 +21909,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.953"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1563"
             end if
 
         end block
@@ -13383,7 +21923,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.954"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1564"
             end if
 
         end block
@@ -13397,7 +21937,7 @@ program test_is_contained_by_next_out
             call set_ieee_negative_inf(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.955"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1565"
             end if
 
         end block
@@ -13411,7 +21951,7 @@ program test_is_contained_by_next_out
             call set_negative_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.956"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1566"
             end if
 
         end block
@@ -13425,7 +21965,7 @@ program test_is_contained_by_next_out
             call set_negative_huge_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.957"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1567"
             end if
 
         end block
@@ -13439,7 +21979,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.958"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1568"
             end if
 
         end block
@@ -13453,7 +21993,7 @@ program test_is_contained_by_next_out
             call set_negative_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.959"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1569"
             end if
 
         end block
@@ -13467,7 +22007,7 @@ program test_is_contained_by_next_out
             call set_negative_one_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.960"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1570"
             end if
 
         end block
@@ -13481,7 +22021,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.961"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1571"
             end if
 
         end block
@@ -13495,7 +22035,7 @@ program test_is_contained_by_next_out
             call set_negative_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.962"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1572"
             end if
 
         end block
@@ -13509,7 +22049,21 @@ program test_is_contained_by_next_out
             call set_negative_epsilon_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.963"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1573"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_negative_tiny_next_down(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1574"
             end if
 
         end block
@@ -13523,7 +22077,7 @@ program test_is_contained_by_next_out
             call set_negative_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.964"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1575"
             end if
 
         end block
@@ -13534,10 +22088,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_negative_zero(y)
+            call set_negative_tiny_next_up(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.965"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1576"
             end if
 
         end block
@@ -13548,10 +22102,10 @@ program test_is_contained_by_next_out
             real(real128) :: x, y
 
             call set_ieee_positive_inf(x)
-            call set_ieee_positive_zero(y)
+            call set_positive_tiny_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.966"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1577"
             end if
 
         end block
@@ -13565,7 +22119,63 @@ program test_is_contained_by_next_out
             call set_positive_tiny(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.967"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1578"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny_next_up(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1579"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_negative_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1580"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_ieee_positive_zero(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1581"
+            end if
+
+        end block
+
+
+        block
+
+            real(real128) :: x, y
+
+            call set_ieee_positive_inf(x)
+            call set_positive_tiny(y)
+
+            if ( is_contained_by_next_out(x,y) ) then
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1582"
             end if
 
         end block
@@ -13579,7 +22189,7 @@ program test_is_contained_by_next_out
             call set_positive_epsilon(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.968"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1583"
             end if
 
         end block
@@ -13593,7 +22203,7 @@ program test_is_contained_by_next_out
             call set_positive_one(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.969"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1584"
             end if
 
         end block
@@ -13607,7 +22217,7 @@ program test_is_contained_by_next_out
             call set_positive_huge_next_down(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.970"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1585"
             end if
 
         end block
@@ -13621,7 +22231,7 @@ program test_is_contained_by_next_out
             call set_positive_huge(y)
 
             if ( is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.971"
+                error stop "> NG! ; REQUIRED: .false. / RESULT: .true. @test_is_contained_by_next_out.fypp No.1586"
             end if
 
         end block
@@ -13635,7 +22245,7 @@ program test_is_contained_by_next_out
             call set_ieee_positive_inf(y)
 
             if ( .not. is_contained_by_next_out(x,y) ) then
-                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.972"
+                error stop "> NG! ; REQUIRED: .true. / RESULT: .false. @test_is_contained_by_next_out.fypp No.1587"
             end if
 
         end block
