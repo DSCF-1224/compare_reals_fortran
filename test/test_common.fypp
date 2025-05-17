@@ -83,9 +83,7 @@ program ${PROGRAM_NAME}$
 
                 #:if SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
                     #:set FLAG = ".not. "
-                #:elif (SET_VALUE_STATEMENT_X == "set_ieee_negative_zero") and (SET_VALUE_STATEMENT_Y == "set_ieee_positive_zero")
-                    #:set FLAG = ".not. "
-                #:elif SET_VALUE_STATEMENT_X == "set_ieee_positive_zero" and SET_VALUE_STATEMENT_Y == "set_ieee_negative_zero"
+                #:elif ("zero" in SET_VALUE_STATEMENT_X) and ("zero" in SET_VALUE_STATEMENT_Y)
                     #:set FLAG = ".not. "
                 #:else
                     #:set FLAG = ""
