@@ -98,10 +98,8 @@ program ${PROGRAM_NAME}$
                 #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + PROGRAM_NAME + ".fypp No."
 
             #:endmute
-            if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) then
-                error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
-                #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
-            end if
+            if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+            #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
             #:del ERROR_STOP_MSG
             #:del FLAG
 
