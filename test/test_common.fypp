@@ -28,8 +28,6 @@
         "set_ieee_positive_inf"            &
     ]
 
-#:set COUNT_ERROR_STOP = 1
-
 #:if TARGET_INTERFACE == 0
     #:set INTERFACE_NAME = "intrinsic"
 #:elif TARGET_INTERFACE == 1
@@ -47,6 +45,7 @@
 #:endmute
 program ${PROGRAM_NAME}$
 
+    use, intrinsic :: iso_fortran_env, only: error_unit
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
@@ -101,22 +100,21 @@ program ${PROGRAM_NAME}$
                     #:set FLAG = ""
                 #:endif
 
-                #:if FLAG == ""
-                    #:set ERROR_STOP_MSG = "REQUIRED: .false. / RESULT: .true. "
-                #:else
-                    #:set ERROR_STOP_MSG = "REQUIRED: .true. / RESULT: .false. "
-                #:endif
-
-                #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + PROGRAM_NAME + ".fypp No."
-
             #:endmute
             #:if INTERFACE_NAME != "intrinsic"
-            if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+            if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) then
+            #:elif INTERFACE_NAME == "intrinsic"
+            if ( ${FLAG}$ x .eq. y ) then
             #:else
-            if ( ${FLAG}$ x .eq. y ) error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+                #:stop "Unsupported interface name: `{}` is detected.".format(INTERFACE_NAME)
             #:endif
-            #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
-            #:del ERROR_STOP_MSG
+                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
+                write( unit = error_unit , fmt = *                                )  x
+                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
+                write( unit = error_unit , fmt = *                                )  y
+                write( unit = error_unit , fmt = "(A)"                            ) "NG; ${INTERFACE_NAME}$"
+                error stop
+            end if
             #:del FLAG
 
         end block
