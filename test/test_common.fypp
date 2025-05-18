@@ -25,7 +25,8 @@
         "set_positive_one"               , &
         "set_positive_huge_next_down"    , &
         "set_positive_huge"              , &
-        "set_ieee_positive_inf"            &
+        "set_ieee_positive_inf"          , &
+        "set_ieee_quiet_nan"               &
     ]
 
 #:if TARGET_INTERFACE == 0
@@ -92,7 +93,9 @@ program ${PROGRAM_NAME}$
 
             #:mute
 
-                #:if SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
+                #:if ("nan" in SET_VALUE_STATEMENT_X) or ("nan" in SET_VALUE_STATEMENT_Y)
+                    #:set FLAG = ""
+                #:elif SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
                     #:set FLAG = ".not. "
                 #:elif ("zero" in SET_VALUE_STATEMENT_X) and ("zero" in SET_VALUE_STATEMENT_Y)
                     #:set FLAG = ".not. "
