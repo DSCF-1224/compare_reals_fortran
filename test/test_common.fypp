@@ -30,7 +30,9 @@
 
 #:set COUNT_ERROR_STOP = 1
 
-#:if TARGET_INTERFACE == 1
+#:if TARGET_INTERFACE == 0
+    #:set INTERFACE_NAME = "intrinsic"
+#:elif TARGET_INTERFACE == 1
     #:set INTERFACE_NAME = "eq_transfer"
 #:elif TARGET_INTERFACE == 2
     #:set INTERFACE_NAME = "is_contained_by_next_out"
@@ -49,7 +51,9 @@ program ${PROGRAM_NAME}$
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
+    #:if INTERFACE_NAME != "intrinsic"
     use, non_intrinsic :: compare_reals_fortran, only: ${INTERFACE_NAME}$
+    #:endif
 
     use, non_intrinsic :: compare_reals_fortran_support
     use, non_intrinsic :: ieee_class_fortran
@@ -98,7 +102,11 @@ program ${PROGRAM_NAME}$
                 #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + PROGRAM_NAME + ".fypp No."
 
             #:endmute
+            #:if INTERFACE_NAME != "intrinsic"
             if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+            #:else
+            if ( ${FLAG}$ x .eq. y ) error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
+            #:endif
             #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
             #:del ERROR_STOP_MSG
             #:del FLAG

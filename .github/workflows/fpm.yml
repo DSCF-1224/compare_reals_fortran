@@ -24,10 +24,7 @@ jobs:
       - name: Check fpm
         run: fpm -v
 
-      - name: Build the library
+      - name: Build & test the library
         run: |
-            fpm build --flag "$GFORTRAN_FLAGS"
-
-      - name: test the library
-        run: |
-            fpm test --flag "$GFORTRAN_FLAGS"
+            chmod +x ./run_test.sh
+            ./run_test.sh
