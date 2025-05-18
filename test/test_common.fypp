@@ -66,6 +66,14 @@ program ${PROGRAM_NAME}$
     call test_${KIND}$
     #:endfor
 
+    #:if INTERFACE_NAME != "intrinsic"
+    print *, "OK; ${INTERFACE_NAME}$"
+    #:elif INTERFACE_NAME == "intrinsic"
+    print *, "OK; .eq."
+    #:else
+        #:stop "Unsupported interface name: `{}` is detected.".format(INTERFACE_NAME)
+    #:endif
+
 
     contains
     #:for KIND in REAL_KINDS
