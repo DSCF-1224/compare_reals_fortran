@@ -13,6 +13,11 @@ submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
     #:set FUNCTION_NAME = INTERFACE_NAME + "_" + KIND
     module procedure ${FUNCTION_NAME}$
 
+        if ( ieee_unordered(x,y) ) then
+            is_equal = .false.
+            return
+        end if
+
         is_equal = is_ieee_either_zero(x) .and. is_ieee_either_zero(y)
 
         if (is_equal) return

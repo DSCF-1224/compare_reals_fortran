@@ -8,6 +8,11 @@ submodule (compare_reals_fortran) compare_reals_fortran_eq_transfer
 
     module procedure eq_transfer_real32
 
+        if ( ieee_unordered(x,y) ) then
+            is_equal = .false.
+            return
+        end if
+
         is_equal = is_ieee_either_zero(x) .and. is_ieee_either_zero(y)
 
         if (is_equal) return
@@ -37,6 +42,11 @@ submodule (compare_reals_fortran) compare_reals_fortran_eq_transfer
 
     module procedure eq_transfer_real64
 
+        if ( ieee_unordered(x,y) ) then
+            is_equal = .false.
+            return
+        end if
+
         is_equal = is_ieee_either_zero(x) .and. is_ieee_either_zero(y)
 
         if (is_equal) return
@@ -65,6 +75,11 @@ submodule (compare_reals_fortran) compare_reals_fortran_eq_transfer
 
 
     module procedure eq_transfer_real128
+
+        if ( ieee_unordered(x,y) ) then
+            is_equal = .false.
+            return
+        end if
 
         is_equal = is_ieee_either_zero(x) .and. is_ieee_either_zero(y)
 
