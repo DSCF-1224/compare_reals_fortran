@@ -110,7 +110,7 @@ program ${PROGRAM_NAME}$
             #:endif
                 write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
                 write( unit = error_unit , fmt = *                                )  x
-                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "y value;", "${SET_VALUE_STATEMENT_X}$", ";"
+                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "y value;", "${SET_VALUE_STATEMENT_Y}$", ";"
                 write( unit = error_unit , fmt = *                                )  y
                 write( unit = error_unit , fmt = "(A)"                            ) "NG; ${INTERFACE_NAME}$"
                 error stop
