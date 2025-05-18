@@ -13,16 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
       - name: Install fpm
         uses: fortran-lang/setup-fpm@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check compiler
-        run: gfortran --version
+      - name: Install fypp
+        run: pip install --upgrade fypp ninja
 
-      - name: Check fpm
-        run: fpm -v
+      - name: Check compiler, fpm, fypp
+        run: |
+          gfortran --version
+          fpm -v
+          fypp --version
 
       - name: Build & test the library
         run: |
