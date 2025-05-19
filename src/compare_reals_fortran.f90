@@ -8,6 +8,7 @@ module compare_reals_fortran
     use, intrinsic :: ieee_arithmetic, only: ieee_next_after
     use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_value
+    use, intrinsic :: ieee_arithmetic, only: ieee_unordered
 
     use, non_intrinsic :: ieee_class_fortran, only: is_ieee_either_zero
     use, non_intrinsic :: ieee_class_fortran, only: is_ieee_negative_inf
