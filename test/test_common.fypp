@@ -26,7 +26,8 @@
         "set_positive_huge_next_down"    , &
         "set_positive_huge"              , &
         "set_ieee_positive_inf"          , &
-        "set_ieee_quiet_nan"               &
+        "set_ieee_quiet_nan"             , &
+        "set_ieee_signaling_nan"           &
     ]
 
 #:if TARGET_INTERFACE == 0
