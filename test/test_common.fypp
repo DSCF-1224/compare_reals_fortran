@@ -25,12 +25,14 @@
         "set_positive_one"               , &
         "set_positive_huge_next_down"    , &
         "set_positive_huge"              , &
-        "set_ieee_positive_inf"            &
+        "set_ieee_positive_inf"          , &
+        "set_ieee_quiet_nan"             , &
+        "set_ieee_signaling_nan"           &
     ]
 
-#:set COUNT_ERROR_STOP = 1
-
-#:if TARGET_INTERFACE == 1
+#:if TARGET_INTERFACE == 0
+    #:set INTERFACE_NAME = "intrinsic"
+#:elif TARGET_INTERFACE == 1
     #:set INTERFACE_NAME = "eq_transfer"
 #:elif TARGET_INTERFACE == 2
     #:set INTERFACE_NAME = "is_contained_by_next_out"
@@ -45,11 +47,14 @@
 #:endmute
 program ${PROGRAM_NAME}$
 
+    use, intrinsic :: iso_fortran_env, only: error_unit
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
+    #:if INTERFACE_NAME != "intrinsic"
     use, non_intrinsic :: compare_reals_fortran, only: ${INTERFACE_NAME}$
+    #:endif
 
     use, non_intrinsic :: compare_reals_fortran_support
     use, non_intrinsic :: ieee_class_fortran
@@ -61,6 +66,14 @@ program ${PROGRAM_NAME}$
     #:for KIND in REAL_KINDS
     call test_${KIND}$
     #:endfor
+
+    #:if INTERFACE_NAME != "intrinsic"
+    print *, "OK; ${INTERFACE_NAME}$"
+    #:elif INTERFACE_NAME == "intrinsic"
+    print *, "OK; .eq."
+    #:else
+        #:stop "Unsupported interface name: `{}` is detected.".format(INTERFACE_NAME)
+    #:endif
 
 
     contains
@@ -81,30 +94,31 @@ program ${PROGRAM_NAME}$
 
             #:mute
 
-                #:if SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
+                #:if ("nan" in SET_VALUE_STATEMENT_X) or ("nan" in SET_VALUE_STATEMENT_Y)
+                    #:set FLAG = ""
+                #:elif SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
                     #:set FLAG = ".not. "
-                #:elif (SET_VALUE_STATEMENT_X == "set_ieee_negative_zero") and (SET_VALUE_STATEMENT_Y == "set_ieee_positive_zero")
-                    #:set FLAG = ".not. "
-                #:elif SET_VALUE_STATEMENT_X == "set_ieee_positive_zero" and SET_VALUE_STATEMENT_Y == "set_ieee_negative_zero"
+                #:elif ("zero" in SET_VALUE_STATEMENT_X) and ("zero" in SET_VALUE_STATEMENT_Y)
                     #:set FLAG = ".not. "
                 #:else
                     #:set FLAG = ""
                 #:endif
 
-                #:if FLAG == ""
-                    #:set ERROR_STOP_MSG = "REQUIRED: .false. / RESULT: .true. "
-                #:else
-                    #:set ERROR_STOP_MSG = "REQUIRED: .true. / RESULT: .false. "
-                #:endif
-
-                #:set ERROR_STOP_MSG = "> NG! ; " + ERROR_STOP_MSG + "@" + PROGRAM_NAME + ".fypp No."
-
             #:endmute
+            #:if INTERFACE_NAME != "intrinsic"
             if ( ${FLAG}$${INTERFACE_NAME}$(x,y) ) then
-                error stop "${ERROR_STOP_MSG}$${COUNT_ERROR_STOP}$"
-                #:set COUNT_ERROR_STOP = COUNT_ERROR_STOP + 1
+            #:elif INTERFACE_NAME == "intrinsic"
+            if ( ${FLAG}$ x .eq. y ) then
+            #:else
+                #:stop "Unsupported interface name: `{}` is detected.".format(INTERFACE_NAME)
+            #:endif
+                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
+                write( unit = error_unit , fmt = *                                )  x
+                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "y value;", "${SET_VALUE_STATEMENT_Y}$", ";"
+                write( unit = error_unit , fmt = *                                )  y
+                write( unit = error_unit , fmt = "(A)"                            ) "NG; ${INTERFACE_NAME}$"
+                error stop
             end if
-            #:del ERROR_STOP_MSG
             #:del FLAG
 
         end block
