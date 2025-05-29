@@ -33,6 +33,8 @@
         "set_ieee_signaling_nan"             &
     ]
 
+#:set LEN_SET_VALUE_STATEMENT = max(len(s) for s in LIST_SET_VALUE_STATEMENT)
+
 #:if TARGET_INTERFACE == 0
     #:set INTERFACE_NAME = "intrinsic"
 #:elif TARGET_INTERFACE == 1
@@ -115,9 +117,9 @@ program ${PROGRAM_NAME}$
             #:else
                 #:stop "Unsupported interface name: `{}` is detected.".format(INTERFACE_NAME)
             #:endif
-                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
+                write( unit = error_unit , fmt = "(A,1X,A${LEN_SET_VALUE_STATEMENT}$,A1)" , advance = "no" ) "x value;", "${SET_VALUE_STATEMENT_X}$", ";"
                 write( unit = error_unit , fmt = *                                )  x
-                write( unit = error_unit , fmt = "(A,1X,A30,A1)" , advance = "no" ) "y value;", "${SET_VALUE_STATEMENT_Y}$", ";"
+                write( unit = error_unit , fmt = "(A,1X,A${LEN_SET_VALUE_STATEMENT}$,A1)" , advance = "no" ) "y value;", "${SET_VALUE_STATEMENT_Y}$", ";"
                 write( unit = error_unit , fmt = *                                )  y
                 write( unit = error_unit , fmt = "(A)"                            ) "NG; ${INTERFACE_NAME}$"
                 error stop
