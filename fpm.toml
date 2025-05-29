@@ -21,11 +21,4 @@ source-form = "free"
 
 [dependencies]
 ieee_class_fortran = { git = "https://github.com/DSCF-1224/ieee_class_fortran", branch = "main" }
-
-[[test]]
-name = "test_le_and_ge"
-source-dir = "test"
-main = "test_le_and_ge.f90"
-
-[test.dependencies]
 compare_reals_fortran_test_values = { git = "https://github.com/DSCF-1224/compare_reals_fortran_test_values", branch = "main" }
