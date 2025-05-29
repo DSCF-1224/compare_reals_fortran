@@ -3,31 +3,34 @@
 
 #:set LIST_SET_VALUE_STATEMENT = &
     [ &
-        "set_ieee_negative_inf"          , &
-        "set_negative_huge"              , &
-        "set_negative_huge_next_up"      , &
-        "set_negative_one_next_down"     , &
-        "set_negative_one"               , &
-        "set_negative_one_next_up"       , &
-        "set_negative_epsilon_next_down" , &
-        "set_negative_epsilon"           , &
-        "set_negative_epsilon_next_up"   , &
-        "set_negative_tiny_next_down"    , &
-        "set_negative_tiny"              , &
-        "set_negative_tiny_next_up"      , &
-        "set_positive_tiny_next_down"    , &
-        "set_positive_tiny"              , &
-        "set_positive_tiny_next_up"      , &
-        "set_ieee_negative_zero"         , &
-        "set_ieee_positive_zero"         , &
-        "set_positive_tiny"              , &
-        "set_positive_epsilon"           , &
-        "set_positive_one"               , &
-        "set_positive_huge_next_down"    , &
-        "set_positive_huge"              , &
-        "set_ieee_positive_inf"          , &
-        "set_ieee_quiet_nan"             , &
-        "set_ieee_signaling_nan"           &
+        "set_ieee_negative_inf"            , &
+        "set_negative_huge"                , &
+        "set_negative_huge_next_up"        , &
+        "set_negative_one_next_down"       , &
+        "set_negative_one"                 , &
+        "set_negative_one_next_up"         , &
+        "set_negative_epsilon_next_down"   , &
+        "set_negative_epsilon"             , &
+        "set_negative_epsilon_next_up"     , &
+        "set_negative_tiny_next_down"      , &
+        "set_negative_tiny"                , &
+        "set_negative_tiny_next_up"        , &
+        "set_ieee_negative_zero_next_down" , &
+        "set_ieee_positive_zero_next_up"   , &
+        "set_positive_tiny_next_down"      , &
+        "set_positive_tiny"                , &
+        "set_positive_tiny_next_up"        , &
+        "set_positive_epsilon_next_down"   , &
+        "set_positive_epsilon"             , &
+        "set_positive_epsilon_next_up"     , &
+        "set_positive_one_next_down"       , &
+        "set_positive_one"                 , &
+        "set_positive_one_next_up"         , &
+        "set_positive_huge_next_down"      , &
+        "set_positive_huge"                , &
+        "set_ieee_positive_inf"            , &
+        "set_ieee_quiet_nan"               , &
+        "set_ieee_signaling_nan"             &
     ]
 
 #:if TARGET_INTERFACE == 0
@@ -56,7 +59,7 @@ program ${PROGRAM_NAME}$
     use, non_intrinsic :: compare_reals_fortran, only: ${INTERFACE_NAME}$
     #:endif
 
-    use, non_intrinsic :: compare_reals_fortran_support
+    use, non_intrinsic :: compare_reals_fortran_test_values
     use, non_intrinsic :: ieee_class_fortran
 
 
@@ -98,7 +101,7 @@ program ${PROGRAM_NAME}$
                     #:set FLAG = ""
                 #:elif SET_VALUE_STATEMENT_X == SET_VALUE_STATEMENT_Y
                     #:set FLAG = ".not. "
-                #:elif ("zero" in SET_VALUE_STATEMENT_X) and ("zero" in SET_VALUE_STATEMENT_Y)
+                #:elif SET_VALUE_STATEMENT_X.endswith("zero") and SET_VALUE_STATEMENT_Y.endswith("zero")
                     #:set FLAG = ".not. "
                 #:else
                     #:set FLAG = ""

@@ -1,6 +1,5 @@
 #!/bin/sh -e
-fypp -F                      test/compare_reals_fortran_support.fypp test/compare_reals_fortran_support.f90
-fypp -F -DTARGET_INTERFACE=0 test/test_common.fypp                   test/test_intrinsic.f90
+fypp -F -DTARGET_INTERFACE=0 test/test_common.fypp test/test_intrinsic.f90
 rm -rf build
 fpm test --flag "-Wall -Werror -pedantic -std=f2008 -ffree-line-length-none"
 
